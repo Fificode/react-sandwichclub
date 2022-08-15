@@ -15,7 +15,7 @@ const Footer = () => {
     <button className="text-white md:text-[18px]font-[500] md:font-[600] tracking-[0.002em] md:tracking-[0.02em] leading-[29px] px-[5px] md:px-[10px]">Locations</button>
 </div>
 <div className="flex flex-row py-[10px]">
-    <img src={twitter} alt="twitter logo" className='w-[34px] h-[34px] mx-[5px] cursor-pointer bg-white '/>
+    <img src={twitter} alt="twitter logo" className='w-[34px] h-[34px] mx-[5px] cursor-pointer'/>
     <img src={facebook} alt="facebook logo" className='w-[34px] h-[34px] mx-[5px] cursor-pointer'/>
     <img src={instagram} alt="instagram logo" className='w-[34px] h-[34px] mx-[5px] cursor-pointer'/>
 </div>

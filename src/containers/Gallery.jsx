@@ -36,7 +36,7 @@ const Gallery = () => {
         }}
         navigation={true}
         modules={[Pagination, Navigation]}
-        className="mySwiper"
+        
       >
         <SwiperSlide><SandwichGallery image={firstimg} /></SwiperSlide>
         <SwiperSlide><SandwichGallery image={secondimg} /></SwiperSlide>
