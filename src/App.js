@@ -6,7 +6,7 @@ import Header from './containers/Header';
 import Menu from './containers/Menu';
 import Navbar from './containers/Navbar';
 import Subscribe from './containers/Subscribe';
-
+import "swiper/css/bundle";
 
 function App() {
   return (

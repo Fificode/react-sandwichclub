@@ -12,7 +12,7 @@ import pancheesy from '../assets/pancheesy.png'
 
 const Menu = () => {
 
-  const [moreMenu, setMoreMenu] = useState(true);
+  const [moreMenu, setMoreMenu] = useState(false);
   const viewMenu = () => {
     setMoreMenu(prevState => !prevState);
   }

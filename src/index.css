@@ -2,20 +2,72 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Rasa:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rasa:wght@300&display=swap");
 
 @layer base {
-    body {
-        @apply box-border scroll-smooth font-rasa
-    }
+  body {
+    @apply box-border scroll-smooth font-rasa;
+  }
 
-   li {
-       @apply p-5 text-[18px] font-[500] text-black cursor-pointer tracking-[0.0015em] leading-[29px] hover:text-orange
-   }
+  li {
+    @apply p-5 text-[18px] font-[500] text-black cursor-pointer tracking-[0.0015em] leading-[29px] hover:text-orange;
+  }
 }
 @layer components {
-    .landingimgbg {
-        @apply bg-[url(assets/landingpage.png)] bg-no-repeat bg-cover
-    }
-    .mySwiper{ @apply flex flex-row justify-center overflow-hidden}
+  .landingimgbgdt {
+    @apply bg-[url(assets/landingpage.png)] bg-no-repeat bg-cover;
+  }
+ 
+  .landingimgbgmb {
+    @apply bg-[url(assets/loginpage.png)] bg-no-repeat bg-cover;
+  }
+ 
 }
+
+.swiper {
+    width: 320px;
+    height: 400px;
+  
+}
+
+@media screen and (min-width: 400px) {
+  .swiper {
+    width: 400px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+ 
+  .swiper{
+    width: 768px;
+    
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .swiper{
+    width: 1024px;
+  }}
+
+@media screen and (min-width: 1440px) {
+  .swiper {
+    width: 1440px;
+  }}
+
+
+.swiper-slide {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+ 
