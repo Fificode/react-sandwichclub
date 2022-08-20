@@ -2,7 +2,7 @@ import React from 'react'
 
 const Instagram = () => {
   return (
-    <div>
+    <div className='my-[20px]'>
         <div className='flex md:flex-row md:justify-between flex-col'>
         <div className="flex flex-col p-5 mt-[10px]">
           <h1 className='text-[40px] md:text-[48px] font-[600] leading-[72px] tracking-[0.0015em] text-black'>Stalk Our Instagram</h1>
