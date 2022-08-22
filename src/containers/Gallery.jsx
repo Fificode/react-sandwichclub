@@ -37,6 +37,7 @@ const Gallery = () => {
        1024: {
  slidesPerView: 3,
           slidesPerGroup: 3,
+         
        },
        1440: {
  slidesPerView: 4,

@@ -1,14 +1,24 @@
 import React from 'react'
-import Navbar from '../containers/Navbar'
+
 const Login = () => {
   return (
-    <div>
-        <Navbar />
-        <div className="landingimgbgmb">
-            <div className="flex justify-center items-center w-[300px] h-[300px] shadow-md bg-white">
-            <h1 className="text-[40px] p-3 font-[600] text-white">Log in</h1>
-            <input type="text" name="" id="" className='' />
-            <input type="email" name="" id="" className='' />
+    <div className='landingimgbgmb h-[500px]'>
+        <div className="flex justify-center items-center">
+            <div className="mt-[110px] w-[300px] h-[350px] shadow-md bg-white">
+            <h1 className="text-[35px] py-[10px] font-[600] text-black text-center">Log in</h1>
+            <div className="flex flex-col  p-3">
+             <div className="py-[10px]">
+               <label htmlFor="email" className='text-[19px] font-[500]'>Email</label>
+           <input type="email" name="email" id="email" className='w-[100%] px-[10px] py-[5px] border-[1px] border-solid outline-orange rounded-[5px]' placeholder='Enter email address' />
+           </div>
+           <div className="py-[10px]">
+           <label htmlFor="password" className='text-[19px] font-[500]'>Password</label>
+            <input type="password" name="password" id="password" className='w-[100%] px-[10px] py-[5px] border-[1px] border-solid outline-orange rounded-[5px]' placeholder='Enter password' />
+            </div>
+            <div className="py-[10px] flex justify-center">
+              <button className='w-[100%] px-[10px] py-[5px] text-white bg-orange rounded-[5px] text-center text-[17px] font-[500]'>Log in</button>
+            </div>
+            </div>
             </div>
         </div>
     </div>

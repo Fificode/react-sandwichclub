@@ -2,7 +2,7 @@ import React from 'react'
 
 const Subscribe = () => {
   return (
-    <div className='flex flex-col justify-center items-center bg-grey p-[20px]'>
+    <div className='flex flex-col justify-center items-center bg-grey p-[20px] mb-[30px]'>
         <div className="m-[20px]">
         <h1 className="text-[40px] leading-[60px]  md:text-[48px] font-[600] tracking-[0.0015em] md:leading-[72px] text-black text-center">Subscribe To Our Newsletter</h1>
         <p className="text-[20px] leading-[30px]  md:text-[24px] font-[500] tracking-[0.0015em] md:leading-[36px] text-black text-center">Be updated about news, deals and offers, coupons and whatnot.<br/>
