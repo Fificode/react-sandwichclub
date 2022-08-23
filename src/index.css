@@ -21,7 +21,9 @@
   .landingimgbgmb {
     @apply bg-[url(assets/loginpage.png)] bg-no-repeat bg-cover;
   }
- 
+ .nav-icon{
+  @apply w-6 h-6 cursor-pointer
+ }
 }
 
 .swiper {
