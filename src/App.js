@@ -7,7 +7,9 @@ import Login from './admin/Login';
 import AppContainer from './containers/AppContainer';
 import Productpage from './admin/Productpage';
 import Createproduct from './admin/Createproduct';
+import DashboardNav from './admin/DashboardNav';
 import Dashboard from './admin/Dashboard';
+
 
 function App() {
   return (
@@ -17,9 +19,11 @@ function App() {
     <Route path='/' exact element={<AppContainer/>} />
      <Route path='/login' element={<Login/>} />
      </Route>
-     <Route path='/productpage' element={<Productpage/>} />
-     <Route path='/createproduct' element={<Createproduct/>} />
-     <Route path='/dashboard' element={<Dashboard/>} />
+     <Route path='/dashboard' element={<LayoutsWithDashboard/>} >
+      <Route path='/dashboard/home' element={<Dashboard/>} />
+     <Route path='/dashboard/viewproduct' element={<Productpage/>} />
+     <Route path='/dashboard/createproduct' element={<Createproduct/>} />
+     </Route>
      </Routes>
      </Router>
   );
@@ -33,6 +37,16 @@ function App() {
       </>
     )
   }
+  function LayoutsWithDashboard(){
+    return (
+      <>
+<DashboardNav />
+<Outlet />
+
+      </>
+    )
+  }
+
 }
 
 export default App;
