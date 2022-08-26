@@ -21,7 +21,7 @@ function App() {
      <Route path='/login' element={<Login/>} />
      </Route>
      <Route path='/dashboard' element={<LayoutsWithDashboard/>} >
-      <Route path='/dashboard/home' element={<Dashboard/>} />
+      <Route path='/dashboard' element={<Dashboard/>} />
      <Route path='/dashboard/viewproduct' element={<Productpage/>} />
      <Route path='/dashboard/createproduct' element={<Createproduct/>} />     
      <Route path='/dashboard/editproduct' element={<EditProduct/>} />     
