@@ -9,6 +9,7 @@ import Productpage from './admin/Productpage';
 import Createproduct from './admin/Createproduct';
 import DashboardNav from './admin/DashboardNav';
 import Dashboard from './admin/Dashboard';
+import EditProduct from './admin/EditProduct';
 
 
 function App() {
@@ -22,7 +23,8 @@ function App() {
      <Route path='/dashboard' element={<LayoutsWithDashboard/>} >
       <Route path='/dashboard/home' element={<Dashboard/>} />
      <Route path='/dashboard/viewproduct' element={<Productpage/>} />
-     <Route path='/dashboard/createproduct' element={<Createproduct/>} />
+     <Route path='/dashboard/createproduct' element={<Createproduct/>} />     
+     <Route path='/dashboard/editproduct' element={<EditProduct/>} />     
      </Route>
      </Routes>
      </Router>

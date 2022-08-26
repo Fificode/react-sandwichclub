@@ -30,7 +30,7 @@ scale_up_tr: 'scale_up_tr 0.45s cubic-bezier(0.390, 0.575, 0.565, 1.000) both',
       'large': { 'raw': '(max-width: 1050px)' },
       'medium': { 'raw': '(max-width: 768px)' },
     'small': { 'raw': '(max-width: 550px)' },
-     'smaller': { 'raw': '(max-width: 450px)' },
+     'smaller': { 'raw': '(min-width: 400px)' },
       
      sm: '640px',
       md: '768px',
