@@ -38,13 +38,13 @@ const DropBox = ({ onDrop }) => {
   return (
     <div>
 {' '}
-			<section className="dropbox">
+			<section className="flex flex-col items-center">
 				<div
-					className={`dropbox w-[200px] smaller:w-[250px] md:w-[500px] outline-none text-[18px] px-[5px] py-[50px] border-[1px] border-solid border-${(props) => getColor(props)}  rounded-[5px]`}
+					className={` w-[200px] smaller:w-[250px] md:w-[500px] outline-none text-[18px] px-[5px] py-[50px] border-[1px] border-solid border-${(props) => getColor(props)}  rounded-[5px]`}
 					{...getRootProps({ isDragAccept, isFocused, isDragReject })}
 				>
 					<input {...getInputProps()} />
-					<div className="flex flex-col items-center"><p className='my-[5px]'>Drag 'n' drop some files here</p>
+					<div className="flex flex-col items-center"><p className='my-[5px] text-center'>Drag 'n' drop product image here</p>
 					<button type="button" className="text-[12px] md:text-[16px] px-[10px] md:px-[8px] py-[10px] text-center bg-red text-black rounded-[5px] my-[10px]" onClick={open}>
 						Click to select file
 					</button></div>

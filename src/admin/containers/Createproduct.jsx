@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
-import DropBox from './DropBox';
+import DropBox from '../components/DropBox';
+import ShowImage from '../components/ShowImage';
 
 const Createproduct = () => {
   const [images, setImages] = useState([]);
@@ -29,9 +30,12 @@ const Createproduct = () => {
   <label className="text-[17px] md:text-[21px] font-[500] py-[5px]" htmlFor='Price'>Price</label>
   <input type="text" name='Price' placeholder='Product price' className='w-[200px] smaller:w-[250px] md:w-[500px] outline-orange text-[18px] px-[5px] py-[5px] border-[1px] border-solid rounded-[5px]' />
 </div>
-<div className="flex flex-col my-[10px]">
-   <p className="text-[17px] md:text-[21px] font-[500] py-[5px]" htmlFor='Image'>Image</p>
-   <DropBox />
+<div className="flex flex-col mt-[40px] mb-[20px] relative">
+   <p className="text-[17px] md:text-[21px] font-[500] -top-[13px] absolute left-[3px]">Image</p>
+   <div className="mb-[10px] mt-[20px]">
+    <DropBox onDrop={onDrop} />
+   <ShowImage images={images} />
+   </div>
 </div>
 <div className="flex justify-center my-[15px]">
   <button className='text-[12px] md:text-[16px] px-[10px] md:px-[8px] py-[10px] text-center bg-black text-white rounded-[5px]'>Add Product</button>

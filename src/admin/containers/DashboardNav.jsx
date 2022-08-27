@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { navLinks } from "./utils/NavDB";
+import { navLinks } from "../utils/NavDB";
 import { useRecoilState } from "recoil";
-import { activeNavItemState } from "./atom/ActiveNavBarAtom";
-import admin from '../assets/admin.jpeg'
+import { activeNavItemState } from "../atom/ActiveNavBarAtom";
+import admin from '../../assets/admin.jpeg'
 
 const DashboardNav = () => {
   return (

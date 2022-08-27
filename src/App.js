@@ -3,13 +3,13 @@ import Footer from './containers/Footer';
 import Navbar from './containers/Navbar';
 import "swiper/css/bundle";
 import {BrowserRouter as Router, Routes, Route, Outlet} from 'react-router-dom';
-import Login from './admin/Login';
+import Login from './admin/containers/Login';
 import AppContainer from './containers/AppContainer';
-import Productpage from './admin/Productpage';
-import Createproduct from './admin/Createproduct';
-import DashboardNav from './admin/DashboardNav';
-import Dashboard from './admin/Dashboard';
-import EditProduct from './admin/EditProduct';
+import Productpage from './admin/containers/Productpage';
+import Createproduct from './admin/containers/Createproduct';
+import DashboardNav from './admin/containers/DashboardNav';
+import Dashboard from './admin/containers/Dashboard';
+import EditProduct from './admin/containers/EditProduct';
 
 
 function App() {
