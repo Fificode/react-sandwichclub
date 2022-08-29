@@ -1,22 +1,11 @@
-import React, { useCallback, useState } from 'react';
-import DropBox from '../components/DropBox';
-import ShowImage from '../components/ShowImage';
+import React from 'react';
+import ImageUpload from '../components/ImageUpload';
+
 
 const Createproduct = () => {
-  const [images, setImages] = useState([]);
-  const onDrop = useCallback((acceptedFiles) => {
-    acceptedFiles.map((file, index) => {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        setImages((prevState) => [
-          ...prevState,
-          { id: index, src: e.target.result },
-        ]);
-      };
-      reader.readAsDataURL(file);
-      return file;
-    });
-  }, []);
+  const handleFile = ( )=> {
+
+  }
 
   return (
     <div className='absolute left-[100px] md:left-[150px] xl:left-[280px] my-[30px]'>
@@ -33,8 +22,7 @@ const Createproduct = () => {
 <div className="flex flex-col mt-[40px] mb-[20px] relative">
    <p className="text-[17px] md:text-[21px] font-[500] -top-[13px] absolute left-[3px]">Image</p>
    <div className="mb-[10px] mt-[20px]">
-    <DropBox onDrop={onDrop} />
-   <ShowImage images={images} />
+    <ImageUpload handleFile={handleFile} />
    </div>
 </div>
 <div className="flex justify-center my-[15px]">
