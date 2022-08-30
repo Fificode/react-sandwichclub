@@ -1,24 +1,28 @@
-import React, {useState, useEffect} from 'react';
-
-
+import React, {useState} from 'react';
 
 const Createproduct = () => {
 const [name, setName] = useState("");
 const [price, setPrice] = useState("");
-const [file, setFile] = useState("");
+const [image, setImage] = useState("");
     
-async function createProduct(){
- const formData = new FormData();
- formData.append('name', name);
- formData.append('price', price);
- formData.append('file', file);
+const createProduct = (e) => {
+  e.preventDefault();
 
- let result = await fetch ("https://sandwich-backend.herokuapp.com/api/v1/create/product", {
+//  const formData = new FormData();
+//  formData.append('name', name);
+//  formData.append('price', price);
+//  formData.append('image', image);
+
+ const result = {name, price, image};
+
+  fetch ("https://sandwich-backend.herokuapp.com/api/v1/create/product", {
   method: 'POST',
-  body: formData
- });
-
- alert("Data has been saved")
+  headers: {"Content-Type": "application/json"},
+  body: JSON.stringify(result)
+ }).then(() => {
+  alert("Data has been saved");
+ })
+ ;
 }
  
 
@@ -37,7 +41,7 @@ async function createProduct(){
 <div className="flex flex-col mt-[40px] mb-[20px] relative">
    <p className="text-[17px] md:text-[21px] font-[500] -top-[13px] absolute left-[3px]">Image</p>
    <div className="mb-[10px] mt-[20px]">
-    <input type="file" name="file" onChange={(e) => setFile(e.target.files[0])} id="file" placeholder='Select product image' className='w-[200px]  smaller:w-[250px] md:w-[500px] text-[18px] px-[5px] py-[5px] border-[1px] border-solid rounded-[5px]' />
+    <input type="file" name="file" onChange={(e) => setImage(e.target.files[0])} id="file" placeholder='Select product image' className='w-[200px]  smaller:w-[250px] md:w-[500px] text-[18px] px-[5px] py-[5px] border-[1px] border-solid rounded-[5px]' />
    </div>
 </div>
 <div className="flex justify-center my-[15px]">

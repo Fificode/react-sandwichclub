@@ -6,6 +6,7 @@ const tokenString = sessionStorage.getItem('access_token');
   const adminToken = JSON.parse(tokenString);
   return adminToken?.access_token
 }
+
 const [token, setToken] = useState(getToken());
 
 const saveToken = adminToken => {

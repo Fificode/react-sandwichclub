@@ -22,11 +22,12 @@ const Login = ({setToken}) => {
       email,
       password
     });
+    
     setToken(token);
   }
   return (
     <>
-    <div className='landingimgbgmb h-[100vh]'>
+    <div className='landingimgbgmb h-[500px]'>
         <div className="flex justify-center items-center">
             <div className="mt-[110px] w-[300px] h-[350px] shadow-md bg-white">
             <h1 className="text-[35px] py-[10px] font-[600] text-black text-center">Log in</h1>

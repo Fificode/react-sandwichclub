@@ -9,38 +9,39 @@ import Productpage from './admin/containers/Productpage';
 import Createproduct from './admin/containers/Createproduct';
 import DashboardNav from './admin/containers/DashboardNav';
 import Dashboard from './admin/containers/Dashboard';
-import EditProduct from './admin/containers/EditProduct';
+// import EditProduct from './admin/containers/EditProduct';
 import useToken from './useToken';
 
 
 function App() {
 const { token, setToken } = useToken();
 
-// const ProtectedRoute = ({token}) => {
-//   if(!token) {
-//     return <Login setToken={setToken} />
-// }
-// return <Outlet />;
-//   };
-if(!token) {
+const ProtectedRoute = ({token}) => {
+  if(!token) {
     return <Login setToken={setToken} />
-  }
+}
+return <Outlet />;
+  };
+// if(!token) {
+//     return <Login setToken={setToken} />
+//   }
   return (
     <Router>
      <Routes>
       <Route path='/' element={<LayoutsWithNavbar />}>
     <Route path='/' exact element={<AppContainer/>} />
+    <Route path='/login' element={<Login/>} />
      </Route>
      
      
- {/* <Route element={<ProtectedRoute token={token}/> }> */}
+ <Route element={<ProtectedRoute token={token}/> }>
   <Route path='/dashboard' element={<LayoutsWithDashboard/>} >
  <Route path='/dashboard' element={<Dashboard/>}/>
  <Route path='/dashboard/viewproduct' element={<Productpage/>} />
          <Route path='/dashboard/createproduct' element={<Createproduct/>} />
-     <Route path='/dashboard/editproduct' element={<EditProduct/>} />
+     {/* <Route path='/dashboard/editproduct' element={<EditProduct/>} /> */}
       </Route>
-      {/* </Route> */}
+      </Route>
     
      </Routes>
      </Router>
