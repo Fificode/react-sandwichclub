@@ -16,13 +16,15 @@ import useToken from './useToken';
 function App() {
 const { token, setToken } = useToken();
 
-const ProtectedRoute = ({token}) => {
-  if(!token) {
+// const ProtectedRoute = ({token}) => {
+//   if(!token) {
+//     return <Login setToken={setToken} />
+// }
+// return <Outlet />;
+//   };
+if(!token) {
     return <Login setToken={setToken} />
-}
-return <Outlet />;
-  };
-
+  }
   return (
     <Router>
      <Routes>
@@ -31,15 +33,15 @@ return <Outlet />;
      </Route>
      
      
- <Route element={<ProtectedRoute token={token}/> }>
+ {/* <Route element={<ProtectedRoute token={token}/> }> */}
   <Route path='/dashboard' element={<LayoutsWithDashboard/>} >
  <Route path='/dashboard' element={<Dashboard/>}/>
  <Route path='/dashboard/viewproduct' element={<Productpage/>} />
-     <Route path='/dashboard/createproduct' element={<Createproduct/>} />     
+         <Route path='/dashboard/createproduct' element={<Createproduct/>} />
      <Route path='/dashboard/editproduct' element={<EditProduct/>} />
       </Route>
-      </Route>
-   
+      {/* </Route> */}
+    
      </Routes>
      </Router>
   );
