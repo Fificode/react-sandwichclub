@@ -4,25 +4,11 @@ const Createproduct = () => {
 const [name, setName] = useState("");
 const [price, setPrice] = useState("");
 const [image, setImage] = useState("");
-    
+  const url ="https://sandwich-backend.herokuapp.com/api/v1/create/product";
 const createProduct = (e) => {
   e.preventDefault();
 
-//  const formData = new FormData();
-//  formData.append('name', name);
-//  formData.append('price', price);
-//  formData.append('image', image);
 
- const result = {name, price, image};
-
-  fetch ("https://sandwich-backend.herokuapp.com/api/v1/create/product", {
-  method: 'POST',
-  headers: {"Content-Type": "application/json"},
-  body: JSON.stringify(result)
- }).then(() => {
-  alert("Data has been saved");
- })
- ;
 }
  
 
