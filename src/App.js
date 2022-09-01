@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Footer from './containers/Footer';
 import Navbar from './containers/Navbar';
 import "swiper/css/bundle";
@@ -12,16 +12,11 @@ import Dashboard from './admin/containers/Dashboard';
 // import EditProduct from './admin/containers/EditProduct';
 // import useToken from './useToken';
 
-function setToken(userToken){
-  localStorage.setItem('token', JSON.stringify(userToken));
-}
-function getToken(){
 
-}
 function App() {
-const token = getToken();
 
- 
+const [token, setToken] = useState();
+
 const ProtectedRoute = ({token}) => 
 {
   if(!token) {
