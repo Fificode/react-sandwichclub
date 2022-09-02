@@ -5,6 +5,7 @@ import { useRecoilState } from "recoil";
 import { activeNavItemState } from "../atom/ActiveNavBarAtom";
 import admin from '../../assets/admin.jpeg'
 
+
 const DashboardNav = () => {
   return (
     <div className="fixed top-0 left-0 w-[250px] min-h-[100vh]">
@@ -13,8 +14,8 @@ const DashboardNav = () => {
    <div className="flex flex-col pl-[20px] xl:flex-row xl:pl-[30px] xl:-pb-[20px]">
       <div className="pr-[8px]"><img src={admin} alt="Admin" className='w-[30px] h-[30px] xl:w-[50px] xl:h-[50px] rounded-[50%]' /></div>
       <div className="flex flex-col">
-      <h1 className="text-[20px] font-[600] xl:flex hidden">Firdaws Lamidi</h1>
-      <p className=' pt-[10px] text-[16px] font-[400] xl:pt-[5px] text-gray'>Admin</p>
+      <h1 className="text-[20px] font-[600] xl:flex hidden">{}</h1>
+      <p className=' pt-[10px] text-[16px] font-[400] xl:pt-[5px] text-gray'>{}</p>
       </div>
     </div>
        

@@ -1,20 +1,38 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 
-const Createproduct = () => {
+const Createproduct = ({token}) => {
+
 const [name, setName] = useState("");
 const [price, setPrice] = useState("");
 const [image, setImage] = useState("");
+const formRef = useRef();
+
   const url ="https://sandwich-backend.herokuapp.com/api/v1/create/product";
+
 const createProduct = (e) => {
   e.preventDefault();
+const product = {name, price, image};
 
-
+fetch(url, {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${token}`,
+    'content-type' : 'multipart/form-data',
+  },
+  body: JSON.stringify(product)
+}).then(() => {
+  
+  console.log("New product added");
+  // alert("Data has been saved!")
+})
+formRef.current.reset();
 }
  
 
   return (
     <div className='absolute left-[100px] md:left-[150px] xl:left-[280px] my-[30px]'>
       <h1 className='text-[28px] md:text-[40px] font-[600]'>Create Product</h1>
+      <form ref={formRef}>
       <div className="flex flex-col items-center">
 <div className="flex flex-col my-[10px]">
   <label className="text-[17px] md:text-[21px] font-[500] py-[5px]" htmlFor='Name'>Name</label>
@@ -34,6 +52,7 @@ const createProduct = (e) => {
   <button onClick={createProduct} className='text-[12px] md:text-[16px] px-[10px] md:px-[8px] py-[10px] text-center bg-black text-white rounded-[5px]'>Add Product</button>
 </div>
       </div>
+      </form>
     </div>
   )
 }

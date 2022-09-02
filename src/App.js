@@ -14,15 +14,16 @@ import useToken from './useToken';
 
 
 function App() {
-const [token, setToken] = useToken();
+const {token, setToken} = useToken();
 
 const ProtectedRoute = ({token}) => 
 {
   if(!token) {
  
     return <Login setToken={setToken} />
-    
+  
 } 
+ 
 return <Outlet />;
  
   };
@@ -33,7 +34,7 @@ return <Outlet />;
      <Routes>
       <Route path='/' element={<LayoutsWithNavbar />}>
     <Route path='/' exact element={<AppContainer/>} />
-    <Route path='/login' setToken={setToken} element={<Login/>} />
+    <Route path='/login'  element={<Login setToken={setToken}/>} />
      </Route>
      
      
