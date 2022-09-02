@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Footer from './containers/Footer';
 import Navbar from './containers/Navbar';
 import "swiper/css/bundle";
@@ -10,12 +10,11 @@ import Createproduct from './admin/containers/Createproduct';
 import DashboardNav from './admin/containers/DashboardNav';
 import Dashboard from './admin/containers/Dashboard';
 // import EditProduct from './admin/containers/EditProduct';
-// import useToken from './useToken';
+import useToken from './useToken';
 
 
 function App() {
-
-const [token, setToken] = useState();
+const [token, setToken] = useToken();
 
 const ProtectedRoute = ({token}) => 
 {
@@ -34,7 +33,7 @@ return <Outlet />;
      <Routes>
       <Route path='/' element={<LayoutsWithNavbar />}>
     <Route path='/' exact element={<AppContainer/>} />
-    <Route path='/login' element={<Login/>} />
+    <Route path='/login' setToken={setToken} element={<Login/>} />
      </Route>
      
      
