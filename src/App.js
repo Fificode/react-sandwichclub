@@ -9,8 +9,8 @@ import ProductList from './admin/containers/ProductList';
 import Createproduct from './admin/containers/Createproduct';
 import DashboardNav from './admin/containers/DashboardNav';
 import Dashboard from './admin/containers/Dashboard';
-
 import useToken from './useToken';
+import SubscribersList from './admin/containers/SubscribersList';
 
 
 function App() {
@@ -43,7 +43,7 @@ return <Outlet />;
  <Route path='/dashboard' element={<Dashboard/>}/>
   <Route path='/dashboard/createproduct' element={<Createproduct/>} />
      <Route path='/dashboard/viewproduct' element={<ProductList/>} />
-      
+      <Route path='/dashboard/subscribers' element={<SubscribersList />} />
       </Route>
       </Route>
     </Routes>
