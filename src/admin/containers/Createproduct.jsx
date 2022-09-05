@@ -17,14 +17,18 @@ fetch(url, {
   method: 'POST',
   headers: {
     'Authorization': `Bearer ${token}`,
-    'content-type' : 'multipart/form-data',
+    'Content-type' : 'multipart/form-data',
+    
   },
   body: JSON.stringify(product)
-}).then(() => {
-  
+}).then((res) => {
+  console.log(res);
   console.log("New product added");
-  // alert("Data has been saved!")
-})
+  
+}).catch((error) => {
+  console.log(error);
+}
+)
 formRef.current.reset();
 }
  

@@ -5,7 +5,7 @@ const DashboardRightPart = () => {
     <>
     <div className="pl-[23px] py-[20px] lg:py-[25px]">
       <h1 className="text-[17px] md:text-[22px] lg:text-[28px] font-[500]">
-        Welcome back, Firdaws!
+        Welcome back, {}!
       </h1>
     </div>
     <div className='flex flex-col md:flex-row justify-center'>

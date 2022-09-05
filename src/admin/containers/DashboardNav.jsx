@@ -7,6 +7,22 @@ import admin from '../../assets/admin.jpeg'
 
 
 const DashboardNav = () => {
+// const [profileImage, setProfileImage] = useState(null);
+//   useEffect(() => {
+// const url = "https://sandwich-backend.herokuapp.com/api/v1/profile";
+//  const getProfile = async () => {
+// try {
+//   const response = await fetch(url)
+//   const data = await response.json();
+//   console.log(data);
+// data => setProfileImage(data.user.profilePic);
+// }catch(error){
+//   console.log(error);
+// }
+//  }
+//  getProfile();
+//   }, []);
+
   return (
     <div className="fixed top-0 left-0 w-[250px] min-h-[100vh]">
     <nav className="border-r border-gray min-h-[100vh] w-[80px] xl:w-[250px] pt-8 px-1 flex flex-col items-start justify-between">
