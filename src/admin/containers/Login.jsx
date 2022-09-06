@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-// import {useNavigate} from 'react-router-dom'
+
 import PropTypes from 'prop-types';
 
 async function loginUser(credentials) {
@@ -16,10 +16,10 @@ async function loginUser(credentials) {
 
 
 const Login = ({ setToken }) => {
-  // const nav = useNavigate();
+  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-//  const [user, setUser] = useState();
+
 
 
   const handleSubmit = async e => {
@@ -30,13 +30,10 @@ const Login = ({ setToken }) => {
       password
     });
     setToken(token);
-    //  setUser();
-    //  nav("/dashboard");
+   
   }
 
-// if (user) {
-//     return <div>{user.data.name} is loggged in</div>;
-//   }
+
   return (
     <>
       <div className='landingimgbgmb h-[650px]'>

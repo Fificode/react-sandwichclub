@@ -6,7 +6,7 @@ import { activeNavItemState } from "../atom/ActiveNavBarAtom";
 import admin from '../../assets/admin.jpeg'
 
 
-const DashboardNav = () => {
+const DashboardNav = ({setToken}) => {
 // const [profileImage, setProfileImage] = useState(null);
 //   useEffect(() => {
 // const url = "https://sandwich-backend.herokuapp.com/api/v1/profile";
@@ -24,14 +24,12 @@ const DashboardNav = () => {
 //   }, []);
 
 //Log Out
-// let user = JSON.parse(localStorage.getItem('access_token'));
-// console.log(user);
-// const history = useNavigate();
 
-// const logOut = () => {
-// localStorage.clear(user);
-// history.push('/login');
-// }
+const logOut = () => {
+  setToken(null);
+localStorage.clear();
+
+}
   return (
     <div className="fixed top-0 left-0 w-[250px] min-h-[100vh]">
     <nav className="border-r border-gray min-h-[100vh] w-[80px] xl:w-[250px] pt-8 px-1 flex flex-col items-start justify-between">
@@ -50,7 +48,7 @@ const DashboardNav = () => {
         <div className="flex items-center space-x-8 px-5  cursor-pointer">
             <span> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" /></svg></span>
-      <button className="text-light-black group-hover:text-black group-hover:font-[900] xl:flex hidden">
+      <button onClick={logOut} className="text-light-black group-hover:text-black group-hover:font-[900] xl:flex hidden">
       Log out
       </button>
     </div>
