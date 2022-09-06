@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+// import {useNavigate} from 'react-router-dom'
 import PropTypes from 'prop-types';
 
 async function loginUser(credentials) {
@@ -11,23 +12,31 @@ async function loginUser(credentials) {
   })
     .then(data => data.json())
 }
+
+
+
 const Login = ({ setToken }) => {
+  // const nav = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 //  const [user, setUser] = useState();
 
 
   const handleSubmit = async e => {
+    
     e.preventDefault();
     const token = await loginUser({
       email,
       password
     });
     setToken(token);
-    
+    //  setUser();
+    //  nav("/dashboard");
   }
 
-
+// if (user) {
+//     return <div>{user.data.name} is loggged in</div>;
+//   }
   return (
     <>
       <div className='landingimgbgmb h-[650px]'>
