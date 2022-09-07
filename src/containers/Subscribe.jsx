@@ -10,13 +10,18 @@ const Subscribe = ({token}) => {
 data.append('email', email);
     try {
       const response = await fetch('https://sandwich-backend.herokuapp.com/api/v1/create/subscribers', {
-        method: "post",
-        body: data,
+       method: "post",
+        body: {
+          email: "email@email.com"
+        },
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-type': 'multipart/form-data',
         },
-      })
+        }
+        )
+        // console.log(data);
+//  console.log(response);
       setEmail("");
       const json = await response.json();
 

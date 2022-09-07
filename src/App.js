@@ -62,7 +62,7 @@ return <Outlet />;
   function LayoutsWithDashboard(){
     return (
       <>
-<DashboardNav />
+<DashboardNav setToken={setToken} />
 <Outlet />
 
       </>
