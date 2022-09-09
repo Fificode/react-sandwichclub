@@ -24,6 +24,9 @@
  .nav-icon{
   @apply w-6 h-6 cursor-pointer
  }
+ .active{
+ @apply text-orange
+ }
 }
 
 .swiper {

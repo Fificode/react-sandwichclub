@@ -18,7 +18,7 @@ const Menu = () => {
   }
   return (
     <div>
-      <div id='menu' className='flex md:flex-row md:justify-between flex-col'>
+      <div  className='flex md:flex-row md:justify-between flex-col'>
         <div className="flex flex-col p-5 mt-[10px]">
           <h1 className='text-[40px] md:text-[48px] font-[600] leading-[72px] tracking-[0.0015em] text-black'>The Popular Wiches</h1>
           <p className="text-[20px] md:text-[24px] font-[500] leading-[36px] tracking-[0.0015em] text-black pl-1 pt-1">Don’t worry, they’re quite a nice lot.</p>

@@ -6,26 +6,24 @@ const Subscribe = ({token}) => {
 
   const handleSubmit = async (e) => {
   e.preventDefault();
-   const data = new FormData();
-data.append('email', email);
     try {
       const response = await fetch('https://sandwich-backend.herokuapp.com/api/v1/create/subscribers', {
        method: "post",
-        body: {
-          email: "email@email.com"
-        },
-        headers: {
+         headers: {
           'Authorization': `Bearer ${token}`,
-          'Content-type': 'multipart/form-data',
+          'Content-type': 'application/json',
         },
+        body: JSON.stringify({email}),
         }
         )
-        // console.log(data);
+       
 //  console.log(response);
       setEmail("");
-      const json = await response.json();
-
-      if (json.status === "success") {
+      const json = await response.json(); 
+      console.log("New email added!")
+         alert("Thank you for Subscribing!")
+// console.log(json);
+      if (json.status >= 200 && json.status <= 299) {
          setStatus("SUCCESS");
         return
       }

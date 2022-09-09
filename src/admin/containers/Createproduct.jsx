@@ -9,27 +9,35 @@ const formRef = useRef();
 
   const url ="https://sandwich-backend.herokuapp.com/api/v1/create/product";
 
-const createProduct = (e) => {
+const createProduct = async (e) => {
   e.preventDefault();
 const product = {name, price, image};
 
-fetch(url, {
+try{
+  const response = await fetch( url, {
   method: 'POST',
   headers: {
     'Authorization': `Bearer ${token}`,
-    'Content-type' : 'multipart/form-data',
+    'Content-type' : 'application/json',
     
   },
   body: JSON.stringify(product)
-}).then((res) => {
-  console.log(res);
-  console.log("New product added");
   
-}).catch((error) => {
-  console.log(error);
 }
 )
+
+const data = await response.json();
+console.log(data);
+  console.log("New product added");
+ } 
+
+catch(error) {
+  console.log(error);
+}
+
+
 formRef.current.reset();
+
 }
  
 

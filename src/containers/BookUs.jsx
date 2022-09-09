@@ -3,7 +3,7 @@ import secondimg from '../assets/landingimgtwo.png'
 
 const BookUs = () => {
   return (
-    <div id='catering' className='flex flex-col items-center md:flex-row md:justify-center md:my-[30px]'>
+    <div  className='flex flex-col items-center md:flex-row md:justify-center md:my-[30px]'>
         <div className='my-[30px] w-[280px] md:w-[500px] md:mx-[20px]'>
         <h1 className="text-[40px] leading-[60px]  md:text-[48px] font-[600] tracking-[0.0015em] md:leading-[72px] text-black">Let Us <span className='text-orange'>Cater</span> To Your Needs</h1>
         <h2 className="text-[20px] md:text-[24px] font-[500] tracking-[0.0015em] leading-[36px] text-black my-[20px]">Really.</h2>
