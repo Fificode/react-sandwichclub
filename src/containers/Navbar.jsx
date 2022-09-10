@@ -1,7 +1,6 @@
 import React , {useState} from 'react'
 import {MenuIcon, XIcon} from '@heroicons/react/outline';
 import { navLinks } from "../utils/NavbarDB";
-import {Link} from 'react-router-dom';
 import logo from '../assets/logo.png'
 
 const Navbar = () => {
@@ -17,13 +16,13 @@ const handleClick = () => setNav(!nav);
 </div>
 <ul className='flex large:hidden'>
 {navLinks.map((val) => 
-          <li onClick={() => setActiveNav(val.id)}  key={val.id} className={`
+        <li onClick={() => setActiveNav(val.id)} key={val.id} className={`
        ${
         activeNav === val.id &&  "active"
        }
-  `}>
+  `}> <a href={val.path}>
             {val.title}
-          </li>
+          </a></li>
         )}</ul>
 <div className="lg:hidden" onClick={handleClick}>
     {!nav ? <MenuIcon className='w-10 text-orange m-2' /> : <XIcon className='w-10 text-orange m-2'/>}
@@ -36,8 +35,9 @@ const handleClick = () => setNav(!nav);
        ${
         activeNav === val.id &&  "active"
        }
-  `}>
+  `}><a href={val.path}>
             {val.title}
+            </a>
           </li>
         )}
 </ul>

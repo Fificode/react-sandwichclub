@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-const Subscribe = ({token}) => {
+const Subscribe = () => {
   const [email, setEmail] = useState("");
  const [status, setStatus] = useState(null);
 
@@ -10,7 +10,7 @@ const Subscribe = ({token}) => {
       const response = await fetch('https://sandwich-backend.herokuapp.com/api/v1/create/subscribers', {
        method: "post",
          headers: {
-          'Authorization': `Bearer ${token}`,
+         
           'Content-type': 'application/json',
         },
         body: JSON.stringify({email}),
@@ -21,16 +21,19 @@ const Subscribe = ({token}) => {
       setEmail("");
       const json = await response.json(); 
       console.log("New email added!")
-         alert("Thank you for Subscribing!")
-// console.log(json);
-      if (json.status >= 200 && json.status <= 299) {
-         setStatus("SUCCESS");
+      console.log(json.success);
+      if (json.success === true) {
+         setStatus("SUCCESS");  
+          alert("Thank you for Subscribing!")
         return
+      }
+       else if(json.success === false){
+alert("Email already exists, input another email address");
       }
     } catch (err) {
       setStatus("ERROR");
       console.log(err.response);
-    }
+     }
 
   }
   return (
@@ -46,7 +49,7 @@ Who knows? You may get lucky and get free sandwiches for a month!</p>
       {status === "ERROR" && (
         <div className="flex flex-col items-center m-3"> <p className='text-[20px] leading-[30px]  md:text-[24px] font-[500] tracking-[0.0015em] md:leading-[36px] text-red text-center'>Oops, something went wrong...</p>
           <p className='text-[20px] leading-[30px]  md:text-[24px] font-[500] tracking-[0.0015em] md:leading-[36px] text-red text-center'>
-            Please, <button className='text-underline' onClick={() => setStatus(null)}>try again.</button>
+            Please, <button className='text-underline' onClick={() => setStatus(null)}>click here</button> to try again.
           </p></div>
       )}
 {status === null && (<form onSubmit={handleSubmit}>
