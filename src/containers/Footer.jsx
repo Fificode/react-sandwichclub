@@ -5,7 +5,7 @@ import instagram from '../assets/ig.png'
 
 const Footer = () => {
   return (
-    <div  className="bg-orange h-[420px]  md:h-[320px]  flex flex-col justify-center items-center">
+    <div id="contact" className="bg-orange h-[420px]  md:h-[320px]  flex flex-col justify-center items-center">
 <div className="flex flex-col md:flex-row justify-between py-[10px] ">
     <button className="text-white md:text-[18px]font-[500] md:font-[600] tracking-[0.002em] md:tracking-[0.02em] leading-[29px] px-[5px] md:px-[10px]">Home</button>
     <button className="text-white md:text-[18px]font-[500] md:font-[600] tracking-[0.002em] md:tracking-[0.02em] leading-[29px] px-[5px] md:px-[10px]">About Us</button>

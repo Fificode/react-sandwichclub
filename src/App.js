@@ -33,7 +33,7 @@ return <Outlet />;
     <Router>
      <Routes>
       <Route path='/' element={<LayoutsWithNavbar />}>
-    <Route path='/' exact element={<AppContainer/>} />
+    <Route path='' exact element={<AppContainer/>} />
     <Route path='/login'  element={<Login setToken={setToken}/>} />
      </Route>
      

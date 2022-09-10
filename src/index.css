@@ -12,6 +12,9 @@
   li {
     @apply p-5 text-[18px] font-[500] text-black cursor-pointer tracking-[0.0015em] leading-[29px] hover:text-orange;
   }
+  li:last-child{
+    @apply pl-5 pr-[30px]
+  }
 }
 @layer components {
   .landingimgbgdt {
