@@ -19,6 +19,7 @@ const Gallery = () => {
         <Instagram />
         <div className='my-[20px] '>
           <Swiper
+          watchOverflow={true}
         slidesPerView={1}
         spaceBetween={0}
         slidesPerGroup={1}
