@@ -12,24 +12,23 @@ const formRef = useRef();
 const createProduct = async (e) => {
   e.preventDefault();
 const product = {name, price, image};
-// const tokenString = localStorage.getItem("access_token");
-// let token = JSON.parse(tokenString);
-// token = token.access_token;
+const tokenString = localStorage.getItem("access_token");
+let token = JSON.parse(tokenString);
+token = token.access_token;
 try{
   const response = await fetch( url, {
   method: 'POST',
   headers: {
-   
-    'Content-type' : 'application/json',
-    
-  },
+    'Authorization': `Bearer ${token}`,
+   'Content-type' : 'application/json',
+    },
  
   body: JSON.stringify(product)
   
 }
- 
-)
 
+)
+ console.log(token);
 const data = await response.json();
 console.log(data);
   console.log("New product added");
