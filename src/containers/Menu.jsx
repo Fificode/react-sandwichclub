@@ -6,7 +6,12 @@ import roastbeef from '../assets/roastbeef.png'
 import olepastrami from '../assets/Olepastrami.png'
 import turksub from '../assets/turksub.png'
 import pancheesy from '../assets/pancheesy.png'
-
+import reubenettePH  from '../placeholderimages/ReubenettePH.jpg'
+import porkoPH  from '../placeholderimages/PorkoPH.jpg'
+import roastbeefPH  from '../placeholderimages/roastbeefPH.jpg'
+import olepastramiPH  from '../placeholderimages/OlepastramiPH.jpg'
+import turksubPH  from '../placeholderimages/turksubPH.jpg'
+import pancheesyPH  from '../placeholderimages/pancheesyPH.jpg'
 
 
 
@@ -31,14 +36,14 @@ const Menu = () => {
       </div>
       <div className="flex flex-col justify-center items-center">
         <div className="flex flex-col xl:flex-row ">
-          <Sandwich image={reubenette} title="Reubenette" price="2,000" />
-          <Sandwich image={porko} title="Porko Banh-Mi Deluxe" price="3,700" />
-          <Sandwich image={roastbeef} title="Issa Roast Beef Deli Y'all" price="1,900" />
+          <Sandwich image={reubenette} placeholderimage={reubenettePH} title="Reubenette" price="2,000" />
+          <Sandwich image={porko} placeholderimage={porkoPH}  title="Porko Banh-Mi Deluxe" price="3,700" />
+          <Sandwich image={olepastrami} placeholderimage={olepastramiPH}  title="The Ole Pastrami Delight" price="2,300" />
         </div>
       {moreMenu ? <div className='flex flex-col xl:flex-row' id='more-menu'>
-          <Sandwich image={olepastrami} title="The Ole Pastrami Delight" price="2,300" />
-          <Sandwich image={turksub} title="All Hail The TurkSub" price="3,000" />
-          <Sandwich image={pancheesy} title="The Pan-Cheesy Hamito" price="2,400" />
+        <Sandwich image={pancheesy} placeholderimage={pancheesyPH}  title="The Pan-Cheesy Hamito" price="2,400" />
+        <Sandwich image={turksub} placeholderimage={turksubPH}  title="All Hail The TurkSub" price="3,000" />
+         <Sandwich image={roastbeef} placeholderimage={roastbeefPH}  title="Issa Roast Beef Deli Y'all" price="1,900" />
         </div> : <div></div>}
       </div>
       <div className='md:hidden px-5 py-3'>

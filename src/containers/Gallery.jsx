@@ -11,6 +11,14 @@ import fifthimg from '../assets/Reubenette.png'
 import sixthimg from '../assets/Porko.png'
 import seventhimg from '../assets/roastbeef.png'
 import eightimg from '../assets/Olepastrami.png'
+import firstimgPH  from '../placeholderimages/firstimgPH.jpg'
+import secondimgPH  from '../placeholderimages/secondimgPH.jpg'
+import thirdimgPH  from '../placeholderimages/thirdimgPH.jpg'
+import fourthimgPH  from '../placeholderimages/fourthimgPH.jpg'
+import fifthPH  from '../placeholderimages/ReubenettePH.jpg'
+import sixthPH  from '../placeholderimages/PorkoPH.jpg'
+import seventhPH  from '../placeholderimages/roastbeefPH.jpg'
+import eightPH  from '../placeholderimages/OlepastramiPH.jpg'
 
 const Gallery = () => {
     
@@ -54,14 +62,14 @@ const Gallery = () => {
     "--swiper-navigation-color": "#ffa500",
   }}
       >
-        <SwiperSlide><SandwichGallery image={firstimg} /></SwiperSlide>
-        <SwiperSlide><SandwichGallery image={secondimg} /></SwiperSlide>
-        <SwiperSlide><SandwichGallery image={thirdimg} /></SwiperSlide>
-        <SwiperSlide><SandwichGallery image={fourthimg}/></SwiperSlide>
-        <SwiperSlide><SandwichGallery image={fifthimg}/></SwiperSlide>
-        <SwiperSlide><SandwichGallery image={sixthimg}/></SwiperSlide>
-        <SwiperSlide><SandwichGallery image={seventhimg}/></SwiperSlide>
-        <SwiperSlide><SandwichGallery image={eightimg}/></SwiperSlide>
+        <SwiperSlide><SandwichGallery image={firstimg} placeholderimage={firstimgPH}  /></SwiperSlide>
+        <SwiperSlide><SandwichGallery image={secondimg} placeholderimage={secondimgPH}  /></SwiperSlide>
+        <SwiperSlide><SandwichGallery image={thirdimg} placeholderimage={thirdimgPH} /></SwiperSlide>
+        <SwiperSlide><SandwichGallery image={fourthimg} placeholderimage={fourthimgPH}/></SwiperSlide>
+        <SwiperSlide><SandwichGallery image={fifthimg} placeholderimage={fifthPH}/></SwiperSlide>
+        <SwiperSlide><SandwichGallery image={sixthimg} placeholderimage={sixthPH}/></SwiperSlide>
+        <SwiperSlide><SandwichGallery image={seventhimg} placeholderimage={seventhPH}/></SwiperSlide>
+        <SwiperSlide><SandwichGallery image={eightimg} placeholderimage={eightPH}/></SwiperSlide>
         </Swiper>
        
     </div>
