@@ -1,6 +1,20 @@
-import React from 'react'
+import React , {useState, useEffect} from 'react'
+import ProductTable from '../components/ProductTable'
 
 const ProductList = () => {
+     const [allProducts, setAllProducts] = useState();
+
+
+ useEffect(() => {
+    fetch("https://sandwich-backend.herokuapp.com/api/v1/products")
+    .then( response => response.json())
+     .then( data => setAllProducts(data.data),
+    
+    )
+      
+  }
+  
+  ,[])
   return (
     <div className='absolute left-[90px] smaller:left-[85px]  md:left-[100px] xl:left-[280px] mt-[20px]'>
     <div className="">
@@ -13,9 +27,6 @@ const ProductList = () => {
         <thead class="text-[10px] md:text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="py-3 px-6">
-                    Product Id
-                </th>
-                <th scope="col" class="py-3 px-6">
                    Product Name
                 </th>
                 <th scope="col" class="py-3 px-6">
@@ -27,21 +38,7 @@ const ProductList = () => {
             </tr>
         </thead>
         <tbody>
-            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                   01
-                </th>
-                <td class="py-4 px-6">
-                    Reubenette
-                </td>
-                <td class="py-4 px-6">
-                    N3,700
-                </td>
-                <td class="py-4 px-6">
-                   <img src="" alt="" className='' />
-                </td>
-               
-            </tr>
+         {allProducts && allProducts.map( (product) => (<ProductTable name={product.name} price={product.price} image={product.image} key={product.id} />)) }
         </tbody>
     </table>
 </div>

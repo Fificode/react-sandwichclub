@@ -25,16 +25,17 @@ try{
   method: 'POST',
   headers: {
     'Authorization': `Bearer ${token}`,
-   'Content-type' : 'multipart/form-data',
+  
     },
  
   body: formData
   
 })
- console.log(token);
+//  console.log(token);
 const data = await response.json();
 console.log(data);
   console.log("New product added");
+  alert("New product added!");
  } 
 
 catch(error) {
