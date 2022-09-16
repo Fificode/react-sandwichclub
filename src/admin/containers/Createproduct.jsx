@@ -11,23 +11,26 @@ const formRef = useRef();
 
 const createProduct = async (e) => {
   e.preventDefault();
-const product = {name, price, image};
+//Access token
 const tokenString = localStorage.getItem("access_token");
 let token = JSON.parse(tokenString);
 token = token.access_token;
+
+const formData = new FormData();
+formData.append('name', name);
+formData.append('price', price);
+formData.append('image', image);
 try{
   const response = await fetch( url, {
   method: 'POST',
   headers: {
     'Authorization': `Bearer ${token}`,
-   'Content-type' : 'application/json',
+   'Content-type' : 'multipart/form-data',
     },
  
-  body: JSON.stringify(product)
+  body: formData
   
-}
-
-)
+})
  console.log(token);
 const data = await response.json();
 console.log(data);
@@ -38,9 +41,7 @@ catch(error) {
   console.log(error);
 }
 
-
 formRef.current.reset();
-
 }
  
 

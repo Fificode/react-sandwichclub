@@ -1,15 +1,14 @@
 import React, {useState, useEffect} from 'react'
 
 const DashboardRightPart = () => {
-  const [numberOfSubscribers, setNumberOfSubscribers] = useState(null)
+  const [numberOfSubscribers, setNumberOfSubscribers] = useState(null);
 
-   
-  useEffect(() => {
+ useEffect(() => {
     fetch("https://sandwich-backend.herokuapp.com/api/v1/subscriber")
     .then( response => console.log(response) 
   )
      
-    .then(data => setNumberOfSubscribers(data.length))
+    .then(data => setNumberOfSubscribers(data))
   }
   
   ,[])
