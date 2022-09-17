@@ -48,7 +48,7 @@ useEffect(() => {
             </tr>
         </thead>
         <tbody>
-         {allSubscribers && allSubscribers.map( (subscribers) => (<Subscribers email={subscribers.email} />)) }
+         {allSubscribers && allSubscribers.map( (subscribers, index) => (<Subscribers key={index} email={subscribers.email} />)) }
         </tbody>
     </table>
 </div>

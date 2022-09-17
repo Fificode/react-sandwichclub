@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Subscribers = ({date, email}) => {
+const Subscribers = ({email}) => {
   return (
     <>
     <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700 cursor-pointer">

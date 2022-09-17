@@ -1,20 +1,8 @@
-import React , {useState, useEffect} from 'react'
+import React from 'react'
 import ProductTable from '../components/ProductTable'
 
-const ProductList = () => {
-const [allProducts, setAllProducts] = useState();
-// const [query, setQuery] = useState("");
+const ProductList = ({allProducts}) => {
 
- useEffect(() => {
-    fetch(`https://sandwich-backend.herokuapp.com/api/v1/products`)
-    .then( response => response.json())
-     .then( data => setAllProducts(data.data),
-    
-    )
-  
-  }
-  
-  ,[])
   return (
     <div className='absolute left-[90px] smaller:left-[85px]  md:left-[100px] xl:left-[280px] mt-[20px]'>
     <div className="relative flex flex-row">
@@ -43,7 +31,10 @@ const [allProducts, setAllProducts] = useState();
             </tr>
         </thead>
         <tbody>
-         {allProducts && allProducts.map( (product) => (<ProductTable name={product.name} price={product.price} image={product.image} key={product.id} />)) }
+         {allProducts && allProducts.map( (product) => (
+          <ProductTable name={product.name} price={product.price} image={product.image} key={product.id} />
+        
+         )) }
         </tbody>
     </table>
 </div>
