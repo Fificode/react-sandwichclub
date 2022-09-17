@@ -1,21 +1,32 @@
 import React, {useState, useEffect} from 'react'
 
 const DashboardRightPart = () => {
-//   const [numberOfSubscribers, setNumberOfSubscribers] = useState(0);
+  const [numberOfSubscribers, setNumberOfSubscribers] = useState();
+  const [numberOfProducts, setNumberOfProducts] = useState();
 
-//  useEffect(() => {
-//     fetch("https://sandwich-backend.herokuapp.com/api/v1/subscriber")
-//     .then( response => console.log(response) 
-//   )
-     
-//     .then(data => setNumberOfSubscribers(data.length))
-//   }
-  
-//   ,[])
+//Access token
+const tokenString = localStorage.getItem("access_token");
+let token = JSON.parse(tokenString);
+token = token.access_token;
 
- const [numberOfProducts, setNumberOfProducts] = useState();
+//Get Number of Subcribers
+useEffect(() => {
+    fetch("https://sandwich-backend.herokuapp.com/api/v1/subscriber", {
+      method: 'GET',
+      headers: {
+        'Authorization' :  `Bearer ${token}`
+      }
+    })
+    .then( response => response.json())
+     .then(function(data){ 
+      // console.log(data)
+      setNumberOfSubscribers(data.data.length)}
+    
+    )
+      
+  } ,[token])
 
-
+ //Get Number of Products
  useEffect(() => {
     fetch("https://sandwich-backend.herokuapp.com/api/v1/products")
     .then( response => response.json())
@@ -37,7 +48,7 @@ const DashboardRightPart = () => {
   <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
 </svg>
 </div>
-<h2 className="text-[25px] md:text-[30px] xl:text-[50px] font-[600] text-white">{}</h2>
+<h2 className="text-[25px] md:text-[30px] xl:text-[50px] font-[600] text-white">{numberOfSubscribers}</h2>
 <p className="text-[25px] md:text-[30px] xl:text-[50px] font-[600] text-white">Subscribers</p>
 <div className="py-[20px]">
   <button className='bg-orange rounded-[5px] px-[20px] py-[10px] text-black text-[15px] lg:text-[18px] font-[500]'>Manage List</button>

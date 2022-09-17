@@ -4,10 +4,7 @@ const Subscribers = ({date, email}) => {
   return (
     <>
     <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700 cursor-pointer">
-                 <td class="py-4 px-6">
-                  {date}
-                </td>
-                <td class="py-4 px-6">
+                <td className="py-4 px-3">
                  {email}
                 </td>
                
