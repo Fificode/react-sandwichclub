@@ -1,13 +1,38 @@
 import React, {useState, useEffect} from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const DashboardRightPart = () => {
   const [numberOfSubscribers, setNumberOfSubscribers] = useState();
   const [numberOfProducts, setNumberOfProducts] = useState();
+  const [profile, setProfile] = useState();
+  const navigateSubscribers = useNavigate();
+  const navigateProducts = useNavigate();
+
+  const handleSubcribersList = () => navigateSubscribers("/dashboard/subscribers");
+  const handleProductsList = () => navigateProducts("/dashboard/viewproduct");
 
 //Access token
 const tokenString = localStorage.getItem("access_token");
 let token = JSON.parse(tokenString);
 token = token.access_token;
+
+//Get profile
+useEffect(() => {
+    fetch("https://sandwich-backend.herokuapp.com/api/v1/profile", {
+      method: 'GET',
+      headers: {
+        'Authorization' :  `Bearer ${token}`
+      }
+    })
+    .then( response => response.json())
+     .then(function(data){ 
+      // console.log(data)
+      setProfile(data.user.name)
+      }
+    
+    )
+      
+  } ,[token])
 
 //Get Number of Subcribers
 useEffect(() => {
@@ -38,7 +63,7 @@ useEffect(() => {
     <>
     <div className="pl-[23px] py-[20px] lg:py-[25px]">
       <h1 className="text-[17px] md:text-[22px] lg:text-[28px] font-[500]">
-        Welcome back, {}!
+        Welcome back, {profile}!
       </h1>
     </div>
     <div className='flex flex-col md:flex-row justify-center'>
@@ -51,7 +76,7 @@ useEffect(() => {
 <h2 className="text-[25px] md:text-[30px] xl:text-[50px] font-[600] text-white">{numberOfSubscribers}</h2>
 <p className="text-[25px] md:text-[30px] xl:text-[50px] font-[600] text-white">Subscribers</p>
 <div className="py-[20px]">
-  <button className='bg-orange rounded-[5px] px-[20px] py-[10px] text-black text-[15px] lg:text-[18px] font-[500]'>Manage List</button>
+  <button onClick={handleSubcribersList} className='bg-orange rounded-[5px] px-[20px] py-[10px] text-black text-[15px] lg:text-[18px] font-[500]'>Manage List</button>
 </div>
 </div>
       <div className="w-[200px] h-[280px] md:w-[250px] md:h-[280px] my-[20px] md:my-0 rounded-[5px] xl:w-[400px] xl:h-[500px] mx-[30px] bg-orange py-[50px] shadow-md flex flex-col items-center">
@@ -63,7 +88,7 @@ useEffect(() => {
 <h2 className="text-[25px] md:text-[30px] xl:text-[50px] font-[600] text-black">{numberOfProducts}</h2>
 <p className="text-[25px] md:text-[30px] xl:text-[50px] font-[600] text-black">Stock Total</p>
 <div className="py-[20px]">
-  <button className='bg-black rounded-[5px] px-[20px] py-[10px] text-white text-[15px] lg:text-[18px] font-[500]'>View Products</button>
+  <button onClick={handleProductsList} className='bg-black rounded-[5px] px-[20px] py-[10px] text-white text-[15px] lg:text-[18px] font-[500]'>View Products</button>
 </div>
       </div>
     </div>

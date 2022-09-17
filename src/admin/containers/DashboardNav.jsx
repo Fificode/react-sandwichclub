@@ -1,27 +1,36 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom';
 import { navLinks } from "../utils/NavDB";
 import { useRecoilState } from "recoil";
 import { activeNavItemState } from "../atom/ActiveNavBarAtom";
-import admin from '../../assets/admin.jpeg'
+
 
 
 const DashboardNav = ({setToken}) => {
-// const [profileImage, setProfileImage] = useState(null);
-//   useEffect(() => {
-// const url = "https://sandwich-backend.herokuapp.com/api/v1/profile";
-//  const getProfile = async () => {
-// try {
-//   const response = await fetch(url)
-//   const data = await response.json();
-//   console.log(data);
-// data => setProfileImage(data.user.profilePic);
-// }catch(error){
-//   console.log(error);
-// }
-//  }
-//  getProfile();
-//   }, []);
+const [profileImage, setProfileImage] = useState();
+
+//Access token
+const tokenString = localStorage.getItem("access_token");
+let token = JSON.parse(tokenString);
+token = token.access_token;
+
+//Get profile
+useEffect(() => {
+    fetch("https://sandwich-backend.herokuapp.com/api/v1/profile", {
+      method: 'GET',
+      headers: {
+        'Authorization' :  `Bearer ${token}`
+      }
+    })
+    .then( response => response.json())
+     .then(function(data){ 
+      // console.log(data)
+      setProfileImage(data.user.profilePic)
+      }
+    
+    )
+      
+  } ,[token])
 
 //Log Out
 
@@ -35,11 +44,7 @@ localStorage.removeItem("access_token");
     <nav className="border-r border-gray min-h-[100vh] w-[80px] xl:w-[250px] pt-8 px-1 flex flex-col items-start justify-between">
      <div className="space-y-8 w-full">
    <div className="flex flex-col pl-[20px] xl:flex-row xl:pl-[30px] xl:-pb-[20px]">
-      <div className="pr-[8px]"><img src={admin} alt="Admin" className='w-[30px] h-[30px] xl:w-[50px] xl:h-[50px] rounded-[50%]' /></div>
-      <div className="flex flex-col">
-      <h1 className="text-[20px] font-[600] xl:flex hidden">{}</h1>
-      <p className=' pt-[10px] text-[16px] font-[400] xl:pt-[5px] text-gray'>{}</p>
-      </div>
+      <div className="pr-[8px]"><img src={profileImage} alt="Admin" className='w-[35px] h-[35px] xl:w-[50px] xl:h-[50px] rounded-[50%]' /></div>
     </div>
        
 {navLinks.map((link) => 
