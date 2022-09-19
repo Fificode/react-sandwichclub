@@ -1,14 +1,14 @@
 import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom';
 import { navLinks } from "../utils/NavDB";
-import { useRecoilState } from "recoil";
-import { activeNavItemState } from "../atom/ActiveNavBarAtom";
-
+import {useLocation} from 'react-router-dom';
 
 
 const DashboardNav = ({setToken}) => {
 const [profileImage, setProfileImage] = useState();
-
+ const location = useLocation();
+     const {pathname} = location;
+ const [activeNav, setActiveNav] = useState(pathname);
 //Access token
 const tokenString = localStorage.getItem("access_token");
 let token = JSON.parse(tokenString);
@@ -48,7 +48,7 @@ localStorage.removeItem("access_token");
     </div>
        
 {navLinks.map((link) => 
-          <NavItem link={link} key={link.id} />
+          <NavItem link={link} key={link.id} activeNav={activeNav} setActiveNav={setActiveNav}/>
         )}
         <div className="flex items-center space-x-8 px-5  cursor-pointer">
             <span> <svg  onClick={logOut} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -63,15 +63,15 @@ localStorage.removeItem("access_token");
   )
 }
 
-function NavItem({ link }) {
-  const [activeNav, setActiveNav] = useRecoilState(activeNavItemState);
+function NavItem({ link, activeNav, setActiveNav }) {
+ 
   return (
-    <Link to={link.path} onClick={() => setActiveNav(link.id)}
+    <Link to={link.path} onClick={() => setActiveNav(link.path)}
       key={link.id}
       className={`w-full flex items-center justify-start space-x-8 px-5 cursor-pointer
        group hover:border-orange hover:border-l-4 hover:border-transparent
        ${
-         activeNav === link.id && "border-orange border-l-4"
+         activeNav === link.path && "border-orange border-l-4"
        }
   `}
        >
@@ -80,7 +80,7 @@ function NavItem({ link }) {
       <h1
         className={`text-light-black group-hover:text-black xl:flex hidden
         ${
-          activeNav === link.id && "text-black"
+          activeNav === link.path && "text-black"
         }
   `}
        >

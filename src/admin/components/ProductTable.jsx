@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 
 
-const ProductTable = ({name, price, image, key}) => {
+const ProductTable = ({name, price, image, id}) => {
 
   return (
     <>
@@ -20,7 +20,7 @@ const ProductTable = ({name, price, image, key}) => {
                    <img src={image} alt="" className='w-[20px] h-[20px] mx-[auto]' />
                 </td>
                 <td className="py-4 px-3">
-                  <Link to={`/dashboard/viewproduct/${key}`}>  
+                  <Link to={`/dashboard/viewproduct/${id}`}>  
                   <button className="hover:text-orange">View product</button> 
                   </Link>
                 </td>
