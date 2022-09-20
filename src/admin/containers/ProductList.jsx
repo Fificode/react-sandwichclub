@@ -32,7 +32,8 @@ const ProductList = ({allProducts}) => {
         </thead>
         <tbody>
          {allProducts && allProducts.map( (product, index) => (
-          <ProductTable name={product.name} price={product.price} image={product.image} key={index} id={product.id} />
+          <ProductTable name={product.name} price={product.price} image={product.image} key={index} id={product["_id"
+            ]} />
         
          )) }
         </tbody>

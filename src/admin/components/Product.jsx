@@ -8,7 +8,7 @@ const Product = ({ image, name, price}) => {
       <div className="w-[300px] h-[300px] shadow-md mt-[30px]">
        <div className="flex flex-row relative ">
 <img src={image} alt={name} className='h-[200px] w-[100%]'/>
-<Popup trigger={<div className="absolute right-0 mt-[5px]"><button><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+<Popup trigger={<div className="absolute right-0 mt-[5px]"><button><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" className="w-6 h-6">
   <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z" />
 </svg></button></div>} 
      position="right center" >
