@@ -58,7 +58,7 @@ return <Outlet />;
   <Route path='/dashboard' element={<LayoutsWithDashboard/>} >
  <Route path='/dashboard' element={<Dashboard/>}/>
   <Route path='/dashboard/createproduct' element={<Createproduct/>} />
-  <Route path='/dashboard/updateproduct' element={<UpdateProduct/>} />
+  <Route path='/dashboard/updateproduct/:productId' element={<UpdateProduct allProducts={allProducts}/>} />
      <Route exact path='/dashboard/viewproduct' element={<ProductList allProducts={allProducts}/>} />
      <Route path='/dashboard/viewproduct/:productId' element={<ProductPage allProducts={allProducts}/>} />
       <Route path='/dashboard/subscribers' element={<SubscribersList />} />

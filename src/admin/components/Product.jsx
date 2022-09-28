@@ -1,48 +1,10 @@
-import React, {useState, useEffect} from 'react'
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link} from 'react-router-dom';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
-const Product = ({ image, name, price}) => {
+const Product = ({ image, name, price, id}) => {
  
- //Get all products
-  const [allProducts, setAllProducts] = useState();
-useEffect(() => {
-    fetch(`https://sandwich-backend.herokuapp.com/api/v1/products`)
-    .then( response => response.json())
-     .then(function (data) {
-      setAllProducts(data.data)
-      //  console.log(data)
-    }, )
-  
-  }
- 
-  ,[])
- const setData = (data) => {
- data = allProducts;
-//  console.log(data);
-
-data.map((item) => 
-{
-  let id = item._id;
-  let name = item.name;
-  let image = item.image;
-  let price = item.price;
-return(
-  //  console.log(id),
-  // console.log(item)
-  localStorage.setItem('id', id),
-  localStorage.setItem('name', name),
-  localStorage.setItem('image', image),
-  localStorage.setItem('price', price)
-  )
-  
-}
- 
-)
-//  console.log("id");
-  
-  }
   return (
     <>
     <h1 className="mx-[10px] font-[600] mt-[30px] text-[25px] md:text-[40px]">{name}</h1>
@@ -54,7 +16,7 @@ return(
 </svg></button></div>} 
      position="right center" >
     <div className=" flex flex-col items-center">  
-   <Link to="/dashboard/updateproduct"><div className=""><button onClick={setData} className='text-[18px] leading-[29px] font-[600] tracking-[0.0015em] text-black text-center p-1'>Edit</button></div></Link>
+   <Link to={`/dashboard/updateproduct/${id}`}><div className=""><button className='text-[18px] leading-[29px] font-[600] tracking-[0.0015em] text-black text-center p-1'>Edit</button></div></Link>
       <div><button className='text-[18px] leading-[29px] font-[600] tracking-[0.0015em] text-black text-center p-1'>Delete</button>
       </div>
       </div>
