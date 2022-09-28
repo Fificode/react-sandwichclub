@@ -12,7 +12,7 @@ const thisProduct = allProducts.find(prod => prod['_id'] === productId)
   return (
     <div className='flex flex-col absolute left-[90px] smaller:left-[85px]  md:left-[100px] xl:left-[280px] mt-[20px]'>
    
-    <Product name={thisProduct.name} image={thisProduct.image} price={thisProduct.price}/>
+    <Product name={thisProduct.name} image={thisProduct.image} price={thisProduct.price} id={productId}/>
     
     </div>
   )

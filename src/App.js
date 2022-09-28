@@ -8,6 +8,7 @@ import AppContainer from './containers/AppContainer';
 import ProductList from './admin/containers/ProductList';
 import ProductPage from './admin/containers/Productpage';
 import Createproduct from './admin/containers/Createproduct';
+import UpdateProduct from './admin/containers/UpdateProduct';
 import DashboardNav from './admin/containers/DashboardNav';
 import Dashboard from './admin/containers/Dashboard';
 import useToken from './useToken';
@@ -57,6 +58,7 @@ return <Outlet />;
   <Route path='/dashboard' element={<LayoutsWithDashboard/>} >
  <Route path='/dashboard' element={<Dashboard/>}/>
   <Route path='/dashboard/createproduct' element={<Createproduct/>} />
+  <Route path='/dashboard/updateproduct' element={<UpdateProduct/>} />
      <Route exact path='/dashboard/viewproduct' element={<ProductList allProducts={allProducts}/>} />
      <Route path='/dashboard/viewproduct/:productId' element={<ProductPage allProducts={allProducts}/>} />
       <Route path='/dashboard/subscribers' element={<SubscribersList />} />
