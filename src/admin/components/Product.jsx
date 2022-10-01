@@ -1,11 +1,28 @@
 import React from 'react'
-import { Link} from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
 const Product = ({ image, name, price, id}) => {
+  const navigate = useNavigate();
+
+  //Access token
+const tokenString = localStorage.getItem("access_token");
+let token = JSON.parse(tokenString);
+token = token.access_token;
+
+ const onDelete = () => {
+  // console.log(id);
+fetch( `https://sandwich-backend.herokuapp.com/api/v1/delete/product/${id}` , {
+  method: 'DELETE',
+  headers: {
+    'Authorization': `Bearer ${token}`,
+  },
  
-  return (
+ })
+  navigate('/dashboard/viewproduct');
+ }
+  return ( 
     <>
     <h1 className="mx-[10px] font-[600] mt-[30px] text-[25px] md:text-[40px]">{name}</h1>
       <div className="w-[200px] h-[250px] md:w-[300px] md:h-[300px] shadow-md mt-[30px]">
@@ -17,7 +34,7 @@ const Product = ({ image, name, price, id}) => {
      position="right center" >
     <div className=" flex flex-col items-center">  
    <Link to={`/dashboard/updateproduct/${id}`}><div className=""><button className='text-[18px] leading-[29px] font-[600] tracking-[0.0015em] text-black text-center p-1'>Edit</button></div></Link>
-      <div><button className='text-[18px] leading-[29px] font-[600] tracking-[0.0015em] text-black text-center p-1'>Delete</button>
+      <div><button onClick={onDelete} className='text-[18px] leading-[29px] font-[600] tracking-[0.0015em] text-black text-center p-1'>Delete</button>
       </div>
       </div>
     </Popup>

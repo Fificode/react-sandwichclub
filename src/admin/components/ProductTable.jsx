@@ -13,7 +13,7 @@ const ProductTable = ({name, price, image, id}) => {
                  <td className="py-4 px-3 ">
                    {name}
                 </td>
-                <td className="py-4 px-3">
+                <td className="py-4 px-3 flex flex-col items-center">
                   {price}
                 </td>
                 <td className="py-4 px-3">
