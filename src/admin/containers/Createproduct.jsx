@@ -1,5 +1,5 @@
-import React, {useState, useRef, useEffect} from 'react';
-import FileInput from '../components/FileInput';
+import React, {useState, useRef} from 'react';
+import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 
 const Createproduct = () => {
@@ -64,18 +64,18 @@ formRef.current.reset();
   <input type="text" name='Price' onChange={(e) => setPrice(e.target.value)} placeholder='Product price' className='w-[200px] smaller:w-[250px] md:w-[500px] outline-orange text-[18px] px-[5px] py-[5px] border-[1px] border-solid rounded-[5px]' />
 </div>
 <div className="flex flex-col mt-[40px] mb-[20px] relative">
-  <FileInput setImage={setImage}/>
+   <input accept="image/*" type="file" id="select-image" className="hidden" onChange={(e) => setImage(e.target.files[0])} />
+    <label htmlFor="select-image">
+    <Button variant="contained" color="primary" component="span">
+      Upload Image
+    </Button>
+  </label>
   { setImage && (
   <Box mt={2} textAlign="center">
     <div>Image Preview:</div>
-   <div className="flex justify-center"> <img src={setImage}  className="w-[50px] h-[50px]" /></div>
+   <div className="flex justify-center"> <img src={setImage} alt={setImage.name}  className="w-[50px] h-[50px]" /></div>
   </Box>
 )}
-
-   {/* <p className="text-[17px] md:text-[21px] font-[500] -top-[13px] absolute left-[3px]">Image</p>
-   <div className="mb-[10px] mt-[20px]">
-    <input type="file" name="file" onChange={(e) => setImage(e.target.files[0])} id="file" placeholder='Select product image' className='w-[200px]  smaller:w-[250px] md:w-[500px] text-[18px] px-[5px] py-[5px] border-[1px] border-solid rounded-[5px]' />
-   </div> */}
 </div>
 <div className="flex justify-center my-[15px]">
   <button onClick={addProduct} className='text-[12px] md:text-[16px] px-[10px] md:px-[8px] py-[10px] text-center bg-black text-white rounded-[5px]'>Add Product</button>
