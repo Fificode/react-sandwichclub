@@ -3,7 +3,8 @@ import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 
 const Createproduct = () => {
-
+ const [error, setError] = useState(null);
+const [isLoading, setIsLoading] = useState(false);
 const [name, setName] = useState("");
 const [price, setPrice] = useState("");
 const [image, setImage] = useState(null);
@@ -37,19 +38,26 @@ try{
 })
 //  console.log(token);
 const data = await response.json();
+setIsLoading(true);
 console.log(data);
-  console.log("New product added");
+  // console.log("New product added");
   alert("New product added!");
  } 
 
 catch(error) {
+  setIsLoading(true);
+  setError(true);
   console.log(error);
 }
 
 formRef.current.reset();
 }
-//  console.log(setImage)
-
+  if (error) {
+        return <div className="text-center text-[40px]">Error: {error.message}</div>;
+      } else if (!isLoading) {
+        return <div className="text-center text-[40px]">Loading...</div>;
+      } else
+{
   return (
     <div className='absolute left-[100px] md:left-[150px] xl:left-[280px] my-[30px]'>
       <h1 className='text-[28px] md:text-[40px] font-[600]'>Create Product</h1>
@@ -84,6 +92,7 @@ formRef.current.reset();
       </form>
     </div>
   )
+}
 }
 
 export default Createproduct

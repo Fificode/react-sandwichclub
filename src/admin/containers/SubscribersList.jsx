@@ -3,6 +3,8 @@ import Subscribers from '../components/Subscribers'
 
 const SubscribersList = () => {
     const [allSubscribers, setAllSubscribers] = useState();
+    const [error, setError] = useState(null);
+const [isLoading, setIsLoading] = useState(false);
 //Access token
 const tokenString = localStorage.getItem("access_token");
 let token = JSON.parse(tokenString);
@@ -16,16 +18,27 @@ useEffect(() => {
       }
     })
     .then( response => response.json())
-     .then(function(data){ 
+     .then((data)=> { 
+      setIsLoading(true);
       // console.log(data)
-      setAllSubscribers(data.data)}
+      setAllSubscribers(data.data)},
+
+       (error) => {
+    setIsLoading(true);
+  setError(true);
+  console.log(error);
+}
     
     )
       
-  }
+  },[token])
   
-  ,[token])
-
+ if (error) {
+        return <div className="text-center text-[40px]">Error: {error.message}</div>;
+      } else if (!isLoading) {
+        return <div className="text-center text-[40px]">Loading...</div>;
+      } else
+{
   return (
     <div className='flex flex-col absolute left-[90px] smaller:left-[85px]  md:left-[100px] xl:left-[280px] mt-[20px]'>
    <div className="relative flex flex-row">
@@ -54,6 +67,6 @@ useEffect(() => {
 </div>
    </div>
   )
-}
+}}
 
 export default SubscribersList

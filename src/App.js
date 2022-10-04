@@ -32,18 +32,32 @@ return <Outlet />;
  
   //Get all products
   const [allProducts, setAllProducts] = useState();
+  const [error, setError] = useState(null);
+const [isLoading, setIsLoading] = useState(false);
 // const [query, setQuery] = useState("");
 
  useEffect(() => {
     fetch(`https://sandwich-backend.herokuapp.com/api/v1/products`)
     .then( response => response.json())
-     .then( data => setAllProducts(data.data),
+     .then( (data) => {
+     setIsLoading(true);
+     setAllProducts(data.data)
+    },
+    (error) => {
+              setIsLoading(true);
+              setError(error);
+            }
     
     )
   
   }
   
   ,[])
+ if (error) {
+        return <div className="text-center text-[40px]">Error: {error.message}</div>;
+      } else if (!isLoading) {
+        return <div className="text-center text-[40px]">Loading...</div>;
+      } 
 
   return (
     <Router>
