@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import  {useParams,  useNavigate} from 'react-router-dom' 
 import Button from '@material-ui/core/Button';
 
@@ -10,11 +10,12 @@ const UpdateProduct = ({allProducts}) => {
   const {productId} = useParams(); 
 const thisProduct = allProducts.find(prod => prod['_id'] === productId);
 
-const [error, setError] = useState(null);
-const [isLoading, setIsLoading] = useState(false);
+// const [error, setError] = useState(null);
+// const [isLoading, setIsLoading] = useState(false);
  const [name, setName] = useState(thisProduct.name);
 const [price, setPrice] = useState(thisProduct.price);
 const [image, setImage] = useState(thisProduct.image);
+ const [imageUrl, setImageUrl] = useState(null);
 
 //Access token
 const tokenString = localStorage.getItem("access_token");
@@ -40,23 +41,29 @@ try{
    body: formData
  })
 const data = await response.json();
-setIsLoading(true);
+// setIsLoading(true);
 console.log(data);
   console.log("Product edited");
   navigate(`/dashboard/viewproduct/${productId}`);
+  Window.reload(`/dashboard/viewproduct/${productId}`);
   }
   catch(error) {
-    setIsLoading(true);
-  setError(true);
+    // setIsLoading(true);
+  // setError(true);
   console.log(error);
 }
 }
- if (error) {
-        return <div className="text-center text-[40px]">Error: {error.message}</div>;
-      } else if (!isLoading) {
-        return <div className="text-center text-[40px]">Loading...</div>;
-      } else
-{
+ useEffect(() => {
+  if (image) {
+    setImageUrl(URL.createObjectURL(image));
+  }
+}, [image]);
+//  if (error) {
+//         return <div className="text-center text-[40px]">Error: {error.message}</div>;
+//       } else if (!isLoading) {
+//         return <div className="text-center text-[40px]">Loading...</div>;
+//       } else
+// {
   return (
     <div><div className='absolute left-[100px] md:left-[150px] xl:left-[280px] my-[30px]'>
       <h1 className='text-[28px] md:text-[40px] font-[600]'>Update Product</h1>
@@ -79,9 +86,18 @@ console.log(data);
   </label>
 
 </div>
-<div className="flex flex-col mt-[40px] mb-[20px] relative">
-   <img src={image} alt={image.name} className="w-[80px] h-[80px]" />
-</div>
+ {image &&(
+                <div>
+                  <div>Image Preview:</div>
+                  <div className="flex justify-center"> <img src={image} alt={image.name} className="w-[50px] h-[50px]" /></div>
+               </div>
+              )}
+ {image && imageUrl &&(
+                <div>
+                  <div>Image Preview:</div>
+                  <div className="flex justify-center"> <img src={imageUrl} alt={image.name} className="w-[50px] h-[50px]" /></div>
+               </div>
+              )}
 <div className="flex justify-center my-[15px]">
   <button onClick={updateData} className='text-[12px] md:text-[16px] px-[10px] md:px-[8px] py-[10px] text-center bg-black text-white rounded-[5px]'>Update Product</button>
 </div>
@@ -90,6 +106,6 @@ console.log(data);
     </div></div>
   )
 }
-}
+// }
 
 export default UpdateProduct

@@ -1,12 +1,12 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { Link, useNavigate} from 'react-router-dom';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
 const Product = ({ image, name, price, id}) => {
   const navigate = useNavigate();
-const [error, setError] = useState(null);
-const [isLoading, setIsLoading] = useState(false);
+// const [error, setError] = useState(null);
+// const [isLoading, setIsLoading] = useState(false);
 
   //Access token
 const tokenString = localStorage.getItem("access_token");
@@ -23,21 +23,23 @@ fetch( `https://sandwich-backend.herokuapp.com/api/v1/delete/product/${id}` , {
   },
  
  })
- setIsLoading(true);
+//  setIsLoading(true);
   navigate('/dashboard/viewproduct');
+  Window.reload('/dashboard/viewproduct');
+  // setIsLoading(false);
 }
  catch(error) {
-    setIsLoading(true);
-  setError(true);
+  //   setIsLoading(true);
+  // setError(true);
   console.log(error);
 }
 }
- if (error) {
-        return <div className="text-center text-[40px]">Error: {error.message}</div>;
-      } else if (!isLoading) {
-        return <div className="text-center text-[40px]">Loading...</div>;
-      } else
-{
+//  if (error) {
+//         return <div className="text-center text-[40px]">Error: {error.message}</div>;
+//       } else if (!isLoading) {
+//         return <div className="text-center text-[40px]">Loading...</div>;
+//       } else
+// {
   return ( 
     <>
     <h1 className="mx-[10px] font-[600] mt-[30px] text-[25px] md:text-[40px]">{name}</h1>
@@ -63,5 +65,5 @@ fetch( `https://sandwich-backend.herokuapp.com/api/v1/delete/product/${id}` , {
     </>
   )
 }
-}
+// }
 export default Product
