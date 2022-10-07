@@ -2,7 +2,8 @@ import React from 'react'
 import ProductTable from '../components/ProductTable'
 
  
-const ProductList = ({allProducts}) => {
+const ProductList = ({allProducts, query, setQuery, handleSearch}) => {
+ 
 
   return (
     <div className=' absolute left-[90px] smaller:left-[85px]  md:left-[100px] xl:left-[280px] mt-[20px]'>
@@ -12,8 +13,8 @@ const ProductList = ({allProducts}) => {
   <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
 </svg>
 </div>
-{/* onChange={(e) => setQuery(e.target.value)} value={query} */}
-      <input type="text" name="Search product"  className='w-[220px] md:w-[300px] lg:w-[500px] rounded-[10px] px-[30px] py-[6px] md:py-[10px] border-[1px] border-solid text-[16px]' placeholder="Search for products"/>
+
+      <input type="text" name="Search product"  className='w-[220px] md:w-[300px] lg:w-[500px] rounded-[10px] px-[30px] py-[6px] md:py-[10px] border-[1px] border-solid text-[16px]' placeholder="Search for products" onChange={(e) => setQuery(e.target.value)} value={query}/>
     </div>
      <h1 className="mx-[10px] font-[600] mt-[30px] text-[25px] md:text-[40px]">List of Products</h1>
 <div className="max-w-full overflow-x-auto relative sm:rounded-lg mt-[30px]">
@@ -32,11 +33,11 @@ const ProductList = ({allProducts}) => {
             </tr>
         </thead>
         <tbody>
-         {allProducts && allProducts.map( (product, index) => (
-          <ProductTable name={product.name} price={product.price} image={product.image} key={index} id={product["_id"
-            ]} />
+{handleSearch(allProducts).map((item) => (
+         allProducts && allProducts.map( (product, index) => (
+          <ProductTable  productname={item.name}  name={product.name} price={product.price} image={product.image} key={index} id={product["_id"]} />
         
-         )) }
+         )) ))}
         </tbody>
     </table>
 </div>

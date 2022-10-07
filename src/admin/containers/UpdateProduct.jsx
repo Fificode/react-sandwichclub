@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import  {useParams,  useNavigate} from 'react-router-dom' 
 import Button from '@material-ui/core/Button';
 
@@ -15,7 +15,7 @@ const thisProduct = allProducts.find(prod => prod['_id'] === productId);
  const [name, setName] = useState(thisProduct.name);
 const [price, setPrice] = useState(thisProduct.price);
 const [image, setImage] = useState(thisProduct.image);
- const [imageUrl, setImageUrl] = useState(null);
+//  const [imageUrl, setImageUrl] = useState(thisProduct.image);
 
 //Access token
 const tokenString = localStorage.getItem("access_token");
@@ -41,29 +41,23 @@ try{
    body: formData
  })
 const data = await response.json();
-// setIsLoading(true);
+
 console.log(data);
   console.log("Product edited");
   navigate(`/dashboard/viewproduct/${productId}`);
   Window.reload(`/dashboard/viewproduct/${productId}`);
   }
   catch(error) {
-    // setIsLoading(true);
-  // setError(true);
+   
   console.log(error);
 }
 }
- useEffect(() => {
-  if (image) {
-    setImageUrl(URL.createObjectURL(image));
-  }
-}, [image]);
-//  if (error) {
-//         return <div className="text-center text-[40px]">Error: {error.message}</div>;
-//       } else if (!isLoading) {
-//         return <div className="text-center text-[40px]">Loading...</div>;
-//       } else
-// {
+console.log(image)
+
+setImage(URL.createObjectURL(image));
+ 
+
+
   return (
     <div><div className='absolute left-[100px] md:left-[150px] xl:left-[280px] my-[30px]'>
       <h1 className='text-[28px] md:text-[40px] font-[600]'>Update Product</h1>
@@ -86,16 +80,11 @@ console.log(data);
   </label>
 
 </div>
- {image &&(
+ 
+ {image && (
                 <div>
                   <div>Image Preview:</div>
                   <div className="flex justify-center"> <img src={image} alt={image.name} className="w-[50px] h-[50px]" /></div>
-               </div>
-              )}
- {image && imageUrl &&(
-                <div>
-                  <div>Image Preview:</div>
-                  <div className="flex justify-center"> <img src={imageUrl} alt={image.name} className="w-[50px] h-[50px]" /></div>
                </div>
               )}
 <div className="flex justify-center my-[15px]">

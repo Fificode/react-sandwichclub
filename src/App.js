@@ -32,8 +32,23 @@ return <Outlet />;
  
   //Get all products
   const [allProducts, setAllProducts] = useState();
- 
-// const [query, setQuery] = useState("");
+  const [query, setQuery] = useState("");
+  const [searchParam] = useState(["productname"]);
+
+  const handleSearch = () => {
+     return allProducts.filter((item) => {
+                return searchParam.some((newItem) => {
+                    return (
+                        item[newItem]
+                            .toString()
+                            .toLowerCase()
+                            .indexOf(query.toLowerCase()) > -1
+                    );
+                });
+  })
+   
+        }
+        
 
  useEffect(() => {
     fetch(`https://sandwich-backend.herokuapp.com/api/v1/products`)
@@ -49,7 +64,7 @@ return <Outlet />;
   }
   
   ,[])
-//  
+ 
 
   return (
     <Router>
@@ -65,7 +80,7 @@ return <Outlet />;
  <Route path='/dashboard' element={<Dashboard/>}/>
   <Route path='/dashboard/createproduct' element={<Createproduct/>} />
   <Route path='/dashboard/updateproduct/:productId' element={<UpdateProduct allProducts={allProducts}/>} />
-     <Route exact path='/dashboard/viewproduct' element={<ProductList allProducts={allProducts}/>} />
+     <Route exact path='/dashboard/viewproduct' element={<ProductList allProducts={allProducts} query={query} setQuery={setQuery} handleSearch={handleSearch}/> } />
      <Route path='/dashboard/viewproduct/:productId' element={<ProductPage allProducts={allProducts}/>} />
       <Route path='/dashboard/subscribers' element={<SubscribersList />} />
       </Route>
@@ -73,6 +88,7 @@ return <Outlet />;
     </Routes>
      </Router>
   );
+
 
   function LayoutsWithNavbar(){
     return (
