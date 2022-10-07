@@ -41,7 +41,7 @@ fetch( `https://sandwich-backend.herokuapp.com/api/v1/delete/product/${id}` , {
 // {
   return ( 
     <>
-    <h1 className="mx-[10px] font-[600] mt-[30px] text-[25px] md:text-[40px]">{name}</h1>
+    <h1 className="mx-[5px] font-[600] mt-[30px] text-[25px] md:text-[40px]">{name}</h1>
       <div className="w-[200px] h-[250px] md:w-[300px] md:h-[300px] shadow-md mt-[30px]">
        <div className="flex flex-row relative ">
 <img src={image} alt={name} className='h-[150px] md:h-[200px] w-[100%]'/>

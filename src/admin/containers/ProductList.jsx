@@ -1,10 +1,49 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import ProductTable from '../components/ProductTable'
 
  
-const ProductList = ({allProducts, query, setQuery, handleSearch}) => {
- 
-
+const ProductList = () => {
+  const [error, setError] = useState(null);
+const [isLoading, setIsLoading] = useState(false);
+const [allProducts, setAllProducts] = useState();
+ const [query, setQuery] = useState("");
+  // const [searchParam] = useState(["productname"]);
+useEffect(() => {
+    fetch(`https://sandwich-backend.herokuapp.com/api/v1/products`)
+    .then( response => response.json())
+     .then( (data) => {
+   setIsLoading(true);
+     setAllProducts(data.data)
+    },
+    
+      (error) => {
+    setIsLoading(true);
+  setError(true);
+  console.log(error);
+}
+    )
+  
+  }
+  
+  ,[])
+  // const handleSearch = () => {
+  //    return allProducts.filter((item) => {
+  //               return searchParam.some((newItem) => {
+  //                   return (
+  //                       item[newItem]
+  //                           .toString()
+  //                           .toLowerCase()
+  //                           .indexOf(query.toLowerCase()) > -1
+  //                   );
+  //               });
+  // })
+   
+  //       }
+        if (error) {
+        return <div className="text-center text-[40px]">Error: {error.message}</div>;
+      } else if (!isLoading) {
+        return <div className="text-center text-[40px]">Loading...</div>;
+      } else {
   return (
     <div className=' absolute left-[90px] smaller:left-[85px]  md:left-[100px] xl:left-[280px] mt-[20px]'>
     <div className="relative flex flex-row">
@@ -47,5 +86,5 @@ const ProductList = ({allProducts, query, setQuery, handleSearch}) => {
     </div>
   )
 }
-
+}
 export default ProductList
