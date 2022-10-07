@@ -48,7 +48,7 @@ useEffect(() => {
 </svg>
 </div>
 {/* onChange={(e) => setQuery(e.target.value)} value={query} */}
-      <input type="text" name="Search product"  className='w-[220px] md:w-[300px] lg:w-[500px] rounded-[10px] px-[30px] py-[6px] md:py-[10px] border-[1px] border-solid text-[16px]' placeholder="Search for subscribers"/>
+      <input type="text" name="Search product"  className='w-[220px] md:w-[300px] lg:w-[500px] rounded-[15px] border-gray px-[30px] py-[3px] md:py-[10px] border-[1px] border-solid text-[16px]' placeholder="Search for subscribers"/>
     </div>
       <h1 className="mx-[10px] font-[600] mt-[30px] text-[25px] md:text-[40px]">List of Subscribers</h1>
     <div className="overflow-x-auto relative sm:rounded-lg mt-[30px]">

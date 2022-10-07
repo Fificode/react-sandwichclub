@@ -25,7 +25,6 @@ fetch( `https://sandwich-backend.herokuapp.com/api/v1/delete/product/${id}` , {
  })
 //  setIsLoading(true);
   navigate('/dashboard/viewproduct');
-  Window.reload('/dashboard/viewproduct');
   // setIsLoading(false);
 }
  catch(error) {

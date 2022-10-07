@@ -45,7 +45,6 @@ const data = await response.json();
 console.log(data);
   console.log("Product edited");
   navigate(`/dashboard/viewproduct/${productId}`);
-  Window.reload(`/dashboard/viewproduct/${productId}`);
   }
   catch(error) {
    
@@ -53,8 +52,8 @@ console.log(data);
 }
 }
 console.log(image)
+ 
 
-setImage(URL.createObjectURL(image));
  
 
 
@@ -72,7 +71,9 @@ setImage(URL.createObjectURL(image));
   <input type="text" name='Price' value={price} onChange={(e) => setPrice(e.target.value)}  placeholder='Product price' className='w-[200px] smaller:w-[250px] md:w-[500px] outline-orange text-[18px] px-[5px] py-[5px] border-[1px] border-solid rounded-[5px]' />
 </div>
 <div className="flex flex-col mt-[40px] mb-[20px] relative">
-   <input accept="image/*" type="file" id="select-image" className="hidden" onChange={(e) => setImage(e.target.files[0])} />
+   <input accept="image/*" type="file" id="select-image" className="hidden" onChange={(e) => 
+    {let newUrl = URL.createObjectURL(e.target.files[0]);
+      setImage(newUrl)}} />
     <label htmlFor="select-image">
     <Button variant="contained" color="primary" component="span">
       Upload Image

@@ -14,7 +14,7 @@ const ProductList = ({allProducts, query, setQuery, handleSearch}) => {
 </svg>
 </div>
 
-      <input type="text" name="Search product"  className='w-[220px] md:w-[300px] lg:w-[500px] rounded-[10px] px-[30px] py-[6px] md:py-[10px] border-[1px] border-solid text-[16px]' placeholder="Search for products" onChange={(e) => setQuery(e.target.value)} value={query}/>
+      <input type="text" name="Search product"  className='w-[220px] md:w-[300px] lg:w-[500px] rounded-[15px] px-[30px] py-[3px] md:py-[10px] border-[1px] border-solid border-gray text-[16px]' placeholder="Search for products" onChange={(e) => setQuery(e.target.value)} value={query}/>
     </div>
      <h1 className="mx-[10px] font-[600] mt-[30px] text-[25px] md:text-[40px]">List of Products</h1>
 <div className="max-w-full overflow-x-auto relative sm:rounded-lg mt-[30px]">
@@ -33,11 +33,13 @@ const ProductList = ({allProducts, query, setQuery, handleSearch}) => {
             </tr>
         </thead>
         <tbody>
-{handleSearch(allProducts).map((item) => (
+{/* {handleSearch(allProducts).map((item) => ( */
          allProducts && allProducts.map( (product, index) => (
-          <ProductTable  productname={item.name}  name={product.name} price={product.price} image={product.image} key={index} id={product["_id"]} />
+          <ProductTable   name={product.name} price={product.price} image={product.image} key={index} id={product["_id"]} />
         
-         )) ))}
+         )) 
+        //  ))
+         }
         </tbody>
     </table>
 </div>

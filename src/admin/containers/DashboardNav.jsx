@@ -43,8 +43,8 @@ localStorage.removeItem("access_token");
     <div className="fixed top-0 left-0 w-[250px] min-h-[100vh]">
     <nav className="border-r border-gray min-h-[100vh] w-[80px] xl:w-[250px] pt-8 px-1 flex flex-col items-start justify-between">
      <div className="space-y-8 w-full">
-   <div className="flex flex-col pl-[20px] xl:flex-row xl:pl-[30px] xl:-pb-[20px]">
-      <div className="pr-[8px]"><img src={profileImage} alt="Admin" className='w-[35px] h-[35px] xl:w-[50px] xl:h-[50px] rounded-[50%]' /></div>
+   <div className="flex flex-col pl-[20px] xl:flex-row xl:pl-[80px] xl:-pb-[20px]">
+      <div className="pr-[8px] "><img src={profileImage} alt="Admin" className='w-[35px] h-[35px] xl:w-[50px] xl:h-[50px] rounded-[50%]' /></div>
     </div>
        
 {navLinks.map((link) => 
