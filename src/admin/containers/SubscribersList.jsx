@@ -2,9 +2,11 @@ import React, {useState, useEffect} from 'react'
 import Subscribers from '../components/Subscribers'
 
 const SubscribersList = () => {
-    const [allSubscribers, setAllSubscribers] = useState();
+    const [allSubscribers, setAllSubscribers] = useState([]);
     const [error, setError] = useState(null);
 const [isLoading, setIsLoading] = useState(false);
+const [query, setQuery] = useState("");
+  const [searchParam] = useState(["email"]);
 //Access token
 const tokenString = localStorage.getItem("access_token");
 let token = JSON.parse(tokenString);
@@ -32,9 +34,23 @@ useEffect(() => {
     )
       
   },[token])
+
+  const handleSearch = (allSubscribers) => {
+     return allSubscribers.filter((subscriber) => {
+                return searchParam.some((newSubscriber) => {
+                    return (
+                        subscriber[newSubscriber]
+                            .toString()
+                            .toLowerCase()
+                            .indexOf(query.toLowerCase()) > -1
+                    );
+                });
+  })
+   
+        }
   
  if (error) {
-        return <div className="text-center text-[40px]">Error: {error.message}</div>;
+        return <div className="text-center text-[40px]">Error: Refresh Page</div>;
       } else if (!isLoading) {
         return <div className="text-center text-[40px]">Loading...</div>;
       } else
@@ -42,13 +58,13 @@ useEffect(() => {
   return (
     <div className='flex flex-col absolute left-[90px] smaller:left-[85px]  md:left-[100px] xl:left-[280px] mt-[20px]'>
    <div className="relative flex flex-row">
-     <div className="absolute left-0 px-[5px] pt-[7px]">
+     <div className="absolute left-0 px-[5px] pt-[7px] md:py-[13px]">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
   <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
 </svg>
 </div>
-{/* onChange={(e) => setQuery(e.target.value)} value={query} */}
-      <input type="text" name="Search product"  className='w-[220px] md:w-[300px] lg:w-[500px] rounded-[15px] border-gray px-[30px] py-[3px] md:py-[10px] border-[1px] border-solid text-[16px]' placeholder="Search for subscribers"/>
+
+      <input type="text" onChange={(e) => setQuery(e.target.value)} value={query} name="Search product"  className='w-[220px] md:w-[300px] lg:w-[500px] rounded-[15px] border-gray px-[30px] py-[3px] md:py-[10px] border-[1px] border-solid text-[16px]' placeholder="Search for subscribers"/>
     </div>
       <h1 className="mx-[10px] font-[600] mt-[30px] text-[25px] md:text-[40px]">List of Subscribers</h1>
     <div className="overflow-x-auto relative sm:rounded-lg mt-[30px]">
@@ -61,7 +77,7 @@ useEffect(() => {
             </tr>
         </thead>
         <tbody>
-         {allSubscribers && allSubscribers.map( (subscribers, index) => (<Subscribers key={index} email={subscribers.email} />)) }
+         {handleSearch(allSubscribers).map( (subscribers, index) => (<Subscribers key={index} email={subscribers.email} />)) }
         </tbody>
     </table>
 </div>

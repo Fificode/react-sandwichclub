@@ -1,17 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect} from 'react'
 import Sandwich from '../components/Sandwich'
-import reubenette from '../assets/Reubenette.png'
-import porko from '../assets/Porko.png'
-import roastbeef from '../assets/roastbeef.png'
-import olepastrami from '../assets/Olepastrami.png'
-import turksub from '../assets/turksub.png'
-import pancheesy from '../assets/pancheesy.png'
-import reubenettePH  from '../placeholderimages/ReubenettePH.jpg'
-import porkoPH  from '../placeholderimages/PorkoPH.jpg'
-import roastbeefPH  from '../placeholderimages/roastbeefPH.jpg'
-import olepastramiPH  from '../placeholderimages/OlepastramiPH.jpg'
-import turksubPH  from '../placeholderimages/turksubPH.jpg'
-import pancheesyPH  from '../placeholderimages/pancheesyPH.jpg'
 
 
 
@@ -21,6 +9,22 @@ const Menu = () => {
   const viewMenu = () => {
     setMoreMenu(prevState => !prevState);
   }
+  const [allProducts, setAllProducts] = useState([]);
+  useEffect(() => {
+    fetch(`https://sandwich-backend.herokuapp.com/api/v1/products`)
+    .then( response => response.json())
+     .then( (data) => {
+   setAllProducts(data.data)
+    },
+    
+      (error) => {
+  console.log(error);
+}
+    )
+  
+  }
+  
+  ,[])
   return (
     <div>
       <div id='menu' className='flex md:flex-row md:justify-between flex-col'>
@@ -36,14 +40,10 @@ const Menu = () => {
       </div>
       <div className="flex flex-col justify-center items-center">
         <div className="flex flex-col xl:flex-row ">
-          <Sandwich image={reubenette} placeholderimage={reubenettePH} title="Reubenette" price="2,000" />
-          <Sandwich image={porko} placeholderimage={porkoPH}  title="Porko Banh-Mi Deluxe" price="3,700" />
-          <Sandwich image={olepastrami} placeholderimage={olepastramiPH}  title="The Ole Pastrami Delight" price="2,300" />
+          {allProducts.map((product, index) => (<Sandwich  name={product.name} price={product.price} image={product.image} key={index}/>)).slice(0,3)}
         </div>
       {moreMenu ? <div className='flex flex-col xl:flex-row' id='more-menu'>
-        <Sandwich image={pancheesy} placeholderimage={pancheesyPH}  title="The Pan-Cheesy Hamito" price="2,400" />
-        <Sandwich image={turksub} placeholderimage={turksubPH}  title="All Hail The TurkSub" price="3,000" />
-         <Sandwich image={roastbeef} placeholderimage={roastbeefPH}  title="Issa Roast Beef Deli Y'all" price="1,900" />
+          {allProducts.map((product, index) => (<Sandwich  name={product.name} price={product.price} image={product.image} key={index}/>)).slice(3)}
         </div> : <div></div>}
       </div>
       <div className='md:hidden px-5 py-3'>

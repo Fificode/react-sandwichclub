@@ -5,9 +5,9 @@ import ProductTable from '../components/ProductTable'
 const ProductList = () => {
   const [error, setError] = useState(null);
 const [isLoading, setIsLoading] = useState(false);
-const [allProducts, setAllProducts] = useState();
+const [allProducts, setAllProducts] = useState([]);
  const [query, setQuery] = useState("");
-  // const [searchParam] = useState(["productname"]);
+  const [searchParam] = useState(["name"]);
 useEffect(() => {
     fetch(`https://sandwich-backend.herokuapp.com/api/v1/products`)
     .then( response => response.json())
@@ -26,21 +26,21 @@ useEffect(() => {
   }
   
   ,[])
-  // const handleSearch = () => {
-  //    return allProducts.filter((item) => {
-  //               return searchParam.some((newItem) => {
-  //                   return (
-  //                       item[newItem]
-  //                           .toString()
-  //                           .toLowerCase()
-  //                           .indexOf(query.toLowerCase()) > -1
-  //                   );
-  //               });
-  // })
+  const handleSearch = (allProducts) => {
+     return allProducts.filter((product) => {
+                return searchParam.some((newProduct) => {
+                    return (
+                        product[newProduct]
+                            .toString()
+                            .toLowerCase()
+                            .indexOf(query.toLowerCase()) > -1
+                    );
+                });
+  })
    
-  //       }
+        }
         if (error) {
-        return <div className="text-center text-[40px]">Error: {error.message}</div>;
+        return <div className="text-center text-[40px]">Error: Refresh Page</div>;
       } else if (!isLoading) {
         return <div className="text-center text-[40px]">Loading...</div>;
       } else {
@@ -72,13 +72,8 @@ useEffect(() => {
             </tr>
         </thead>
         <tbody>
-{/* {handleSearch(allProducts).map((item) => ( */
-         allProducts && allProducts.map( (product, index) => (
-          <ProductTable   name={product.name} price={product.price} image={product.image} key={index} id={product["_id"]} />
-        
-         )) 
-        //  ))
-         }
+ {handleSearch(allProducts).map((product, index) => ( 
+         <ProductTable   name={product.name} price={product.price} image={product.image} key={index} id={product["_id"]} /> ))}
         </tbody>
     </table>
 </div>

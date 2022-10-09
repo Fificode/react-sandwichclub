@@ -44,6 +44,7 @@ const data = await response.json();
 
 console.log(data);
   console.log("Product edited");
+  alert("Product edited");
   navigate(`/dashboard/viewproduct/${productId}`);
   }
   catch(error) {
@@ -51,7 +52,7 @@ console.log(data);
   console.log(error);
 }
 }
-console.log(image)
+// console.log(image)
  
 
  
