@@ -22,7 +22,8 @@ const Footer = () => {
 <p className='text-[15px] md:text-[18px] font-[500] tracking-[0.0015em] leading-[29px] text-center py-[10px] text-white'>+(234) 012 345 6789 • hello@thesandwichclub.ng</p>
 <p className="py-[10px] text-[15px] md:text-[18px] font-[500] leading-[29px] text-center tracking-[0.0015em] text-white">
     ©2019 The Sandwich Club NG - Atarah <br/>
-Satisfying tastebuds one sandwich at a time.
+Satisfying tastebuds one sandwich at a time. <br/>
+Developed by Firdaws Lamidi.
 </p>
     </div>
   )
