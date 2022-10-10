@@ -4,7 +4,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Sandwich = ({image, name, price}) => {
   return (
-    <div className='w-[290px] md:m-3 shadow-sm md:w-[401px]'>
+    <div className='w-[290px] my-3 md:mx-3 shadow-sm md:w-[401px]'>
       <LazyLoadImage src={image} effect="blur"
        className='h-[311px] w-[100%]'
         alt={name}/>
