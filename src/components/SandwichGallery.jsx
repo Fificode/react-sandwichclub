@@ -6,7 +6,7 @@ const SandwichGallery = ({image, placeholderimage}) => {
 
   return (
     <div className='px-[10px]'>
-        <LazyLoadImage src={image}  PlaceholderSrc={placeholderimage}  effect="blur"
+        <LazyLoadImage src={image}  placeholdersrc={placeholderimage}  effect="blur"
         alt={"Sandwich gallery"} className="w-[230px] h-[230px] lg:w-[265px] lg:h-[265px] rounded-[5px]"/>
        
     </div>

@@ -10,8 +10,9 @@ const Menu = () => {
     setMoreMenu(prevState => !prevState);
   }
   const [allProducts, setAllProducts] = useState([]);
+ 
   useEffect(() => {
-    fetch(`https://sandwich-backend.herokuapp.com/api/v1/products`)
+    fetch(`https://sandwich-backend.herokuapp.com/api/v1/products`, )
     .then( response => response.json())
      .then( (data) => {
    setAllProducts(data.data)
@@ -21,7 +22,7 @@ const Menu = () => {
   console.log(error);
 }
     )
-  
+ 
   }
   
   ,[])

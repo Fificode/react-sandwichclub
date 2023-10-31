@@ -16,7 +16,7 @@ const BookUs = () => {
 <button className='px-[12px] py-[7px] bg-orange rounded-[5px] text-white font-[500] leading-[29px] tracking-[0.0015em] outline-none my-[10px]'>Book Us</button>
 </div>
 <div className='w-[280px] h-[300px] mx-[20px] my-[20px] md:w-[700px] md:h-[570px] md:mx-[30px]'>
-   <LazyLoadImage src={secondimg}  PlaceholderSrc={secondimgPH}  effect="blur"
+   <LazyLoadImage src={secondimg}  placeholdersrc={secondimgPH}  effect="blur"
         alt="Sandwich on a plate"
         className='w-[100%] h-[100%]'
       />
