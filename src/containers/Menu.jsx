@@ -1,5 +1,11 @@
-import React, { useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import Sandwich from '../components/Sandwich'
+import Olepastrami from '../assets/Olepastrami.png'
+import Porko from '../assets/Porko.png'
+import Pancheesy from '../assets/pancheesy.png'
+import Reubenette from '../assets/Reubenette.png'
+import Roastbeef from '../assets/roastbeef.png'
+import Turksub from '../assets/turksub.png'
 
 
 
@@ -9,23 +15,23 @@ const Menu = () => {
   const viewMenu = () => {
     setMoreMenu(prevState => !prevState);
   }
-  const [allProducts, setAllProducts] = useState([]);
+  // const [allProducts, setAllProducts] = useState([]);
  
-  useEffect(() => {
-    fetch(`https://sandwich-backend.herokuapp.com/api/v1/products`, )
-    .then( response => response.json())
-     .then( (data) => {
-   setAllProducts(data.data)
-    },
+//   useEffect(() => {
+//     fetch(`https://sandwich-backend.herokuapp.com/api/v1/products`, )
+//     .then( response => response.json())
+//      .then( (data) => {
+//    setAllProducts(data.data)
+//     },
     
-      (error) => {
-  console.log(error);
-}
-    )
+//       (error) => {
+//   console.log(error);
+// }
+//     )
  
-  }
+//   }
   
-  ,[])
+//   ,[])
   return (
     <div>
       <div id='menu' className='flex md:flex-row md:justify-between flex-col'>
@@ -41,10 +47,16 @@ const Menu = () => {
       </div>
       <div className="flex flex-col justify-center items-center">
         <div className="flex flex-col xl:flex-row ">
-          {allProducts.map((product, index) => (<Sandwich  name={product.name} price={product.price} image={product.image} key={index}/>)).slice(0,3)}
+          {/* {allProducts.map((product, index) => (<Sandwich  name={product.name} price={product.price} image={product.image} key={index}/>)).slice(0,3)} */}
+          <Sandwich name="Olepastrami" price="1000" image={Olepastrami}/>
+          <Sandwich name="Porko" price="2500" image={Porko}/>
+          <Sandwich name="Pancheesy" price="1500" image={Pancheesy}/>
         </div>
       {moreMenu ? <div className='flex flex-col xl:flex-row' id='more-menu'>
-          {allProducts.map((product, index) => (<Sandwich  name={product.name} price={product.price} image={product.image} key={index}/>)).slice(3)}
+          {/* {allProducts.map((product, index) => (<Sandwich  name={product.name} price={product.price} image={product.image} key={index}/>)).slice(3)} */}
+          <Sandwich name="Reubenette" price="2000" image={Reubenette}/>
+          <Sandwich name="Roastbeef" price="1800" image={Roastbeef}/>
+          <Sandwich name="Turksub" price="1500" image={Turksub}/>
         </div> : <div></div>}
       </div>
       <div className='md:hidden px-5 py-3'>
